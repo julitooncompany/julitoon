@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paratriatlón - Los Pececitos - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            background-color: white;
+            color: black;
+            overflow-x: hidden;
+            position: absolute;
+            width: 1440px;
+            height: 1575px;
+        }
+
+        /* Botón de volver para atrás */
+        .boton-volver {
+            position: absolute;
+            left: 100px;
+            top: 25px;
+            width: 148px;
+            height: 148px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .boton-volver svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Section Paratriatlón */
+        .section-paratriatlon {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1440px;
+            padding: 36px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 49px;
+        }
+
+        .text-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 49px;
+        }
+
+        .text-area h1 {
+            font-weight: 900;
+            font-size: 32px;
+            line-height: normal;
+        }
+
+        .text-area .descripcion {
+            font-weight: 900;
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .text-area .descripcion p {
+            margin: 0;
+        }
+
+        .image-area {
+            flex: 0 0 auto;
+        }
+
+        .image-area img {
+            display: block;
+            width: 458px;
+            height: 458px;
+            object-fit: cover;
+        }
+
+        /* Responsive - Tablet (834px) */
+        @media screen and (max-width: 1024px) {
+            .boton-volver {
+                left: 100px;
+                width: 118px;
+                height: 118px;
+            }
+
+            .section-paratriatlon {
+                width: 834px;
+                padding: 36px 100px;
+                flex-direction: column;
+                align-items: center;
+                gap: 49px;
+                top: calc(50% + 62.5px);
+            }
+
+            .text-area {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 634px;
+                text-align: center;
+            }
+
+            .image-area img {
+                width: 458px;
+                height: 458px;
+            }
+        }
+
+        /* Responsive - Mobile (375px) */
+        @media screen and (max-width: 768px) {
+            .boton-volver {
+                left: 16px;
+                top: 25px;
+                width: 66px;
+                height: 66px;
+            }
+
+            .section-paratriatlon {
+                width: 375px;
+                padding: 36px 16px;
+                flex-direction: column;
+                align-items: center;
+                gap: 49px;
+                top: calc(50% + 53px);
+            }
+
+            .text-area {
+                width: 343px;
+                text-align: center;
+            }
+
+            .text-area h1 {
+                font-size: 32px;
+            }
+
+            .text-area .descripcion {
+                font-size: 20px;
+            }
+
+            .image-area img {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Checkbox para controlar el menú (CSS puro) -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <!-- Botón de volver para atrás -->
+    <a href="Trabajos.html" class="boton-volver">
+        <svg viewBox="0 0 148 148" fill="none">
+            <g clip-path="url(#clip0)">
+                <path d="M133.753 39.5709L108.447 14.2648C89.4271 -4.75468 58.5904 -4.75468 39.5708 14.2648L14.2648 39.5709C-4.75475 58.5904 -4.75475 89.4272 14.2648 108.447L39.5708 133.753C58.5904 152.772 89.4271 152.772 108.447 133.753L133.753 108.447C152.772 89.4272 152.772 58.5904 133.753 39.5709Z" fill="#2E3192"/>
+                <mask id="mask0" maskUnits="userSpaceOnUse" x="26" y="26" width="96" height="96" style="mask-type: alpha">
+                    <rect x="26.9091" y="26.9091" width="94.1818" height="94.1818" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0)">
+                    <path d="M57.6163 77.9242L79.592 99.9L74 105.394L42.6061 74L74 42.6061L79.592 48.1L57.6163 70.0758H105.394V77.9242H57.6163Z" fill="#FCEE21"/>
+                </g>
+            </g>
+            <defs>
+                <clipPath id="clip0">
+                    <rect width="148" height="148" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    </a>
+
+    <!-- Section Paratriatlón -->
+    <div class="section-paratriatlon">
+        <div class="text-area">
+            <h1>Paratriatlón de<br>Los Pececitos</h1>
+            <div class="descripcion">
+                <p>Este fue el cuarto cliente</p>
+                <p>que tuve pero era profe de una disciplina</p>
+                <p>de Los Pececitos, que me pidio</p>
+                <p>hacer este flyer.</p>
+            </div>
+        </div>
+        <div class="image-area">
+            <img src="Rectangle 13.jpg" alt="Paratriatlón - Los Pececitos">
+        </div>
+        </div>
+</body>
+</html>
+

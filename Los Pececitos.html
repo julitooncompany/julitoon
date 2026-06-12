@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los Pececitos - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Figtree', sans-serif;
+            font-weight: 900;
+            background-color: white;
+            color: black;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Botón de volver */
+        .back-button {
+            position: absolute;
+            top: 25px;
+            left: 100px;
+            width: 148px;
+            height: 148px;
+            border-radius: 22px;
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+
+        .back-button .arrow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            width: 60px;
+            height: 60px;
+        }
+
+        .back-button .arrow::before {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 6px;
+            background: #FCEE21;
+            top: 27px;
+            left: 0;
+        }
+
+        .back-button .arrow::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            height: 30px;
+            background: #FCEE21;
+            top: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+
+        .back-button .arrow-tip {
+            position: absolute;
+            width: 6px;
+            height: 30px;
+            background: #FCEE21;
+            top: 12px;
+            left: 0;
+            border-radius: 3px;
+            transform: rotate(90deg);
+            transform-origin: 3px 3px;
+        }
+
+        /* Secciones */
+        section {
+            padding: 36px 100px;
+            text-align: center;
+        }
+
+        .intro-section {
+            margin-top: 198px;
+            margin-bottom: 50px;
+        }
+
+        .intro-section h1 {
+            font-size: 32px;
+            margin-bottom: 40px;
+            line-height: normal;
+        }
+
+        .intro-section p {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            display: flex;
+            gap: 110px;
+            align-items: center;
+            justify-content: center;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .text-content {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .text-content h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            line-height: normal;
+        }
+
+        .text-content p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .image-content {
+            flex: 0 0 auto;
+        }
+
+        .image-content img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Imágenes específicas por tamaño */
+        .img-small {
+            width: 300px;
+        }
+
+        .img-medium {
+            width: 484px;
+        }
+
+        .img-large {
+            width: 566px;
+        }
+
+        .img-xlarge {
+            width: 640px;
+        }
+
+        /* Flyers section */
+        .flyers-section {
+            margin: 100px 0;
+        }
+
+        .flyers-intro {
+            margin-bottom: 80px;
+        }
+
+        .flyers-intro h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .flyers-intro p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .flyers-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 153px;
+            align-items: center;
+        }
+
+        .flyers-grid img {
+            width: 719px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Más trabajos section */
+        .mas-trabajos-section {
+            margin: 100px 0;
+        }
+
+        .mas-trabajos-section h2 {
+            font-size: 96px;
+            margin-bottom: 120px;
+        }
+
+        .trabajos-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 122px;
+            align-items: center;
+        }
+
+        .trabajos-grid img {
+            width: 728px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Últimos flyers */
+        .ultimos-flyers {
+            display: flex;
+            flex-direction: column;
+            gap: 138px;
+            align-items: center;
+            margin: 100px 0;
+        }
+
+        .ultimos-flyers img {
+            width: 655px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Página web mockup */
+        .pagina-web-section {
+            margin: 100px 0;
+            padding: 36px 100px;
+        }
+
+        .pagina-web-section img {
+            width: 996px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Tablet styles (834px) */
+        @media screen and (max-width: 1024px) {
+            .back-button {
+                width: 118px;
+                height: 118px;
+                left: 100px;
+            }
+
+            .back-button .arrow {
+                width: 50px;
+                height: 50px;
+            }
+
+            section {
+                padding: 36px 100px;
+            }
+
+            .intro-section {
+                margin-top: 168px;
+            }
+
+            .intro-section h1 {
+                font-size: 32px;
+            }
+
+            .content-section {
+                flex-direction: column !important;
+                gap: 60px;
+            }
+
+            .text-content {
+                text-align: center;
+                max-width: 508px;
+            }
+
+            .img-small {
+                width: 300px;
+            }
+
+            .img-medium {
+                width: 484px;
+            }
+
+            .img-large {
+                width: 540px;
+            }
+
+            .img-xlarge {
+                width: 594px;
+            }
+
+            .flyers-grid img {
+                width: 536px;
+            }
+
+            .mas-trabajos-section h2 {
+                font-size: 64px;
+            }
+
+            .trabajos-grid img {
+                width: 500px;
+            }
+
+            .ultimos-flyers img {
+                width: 520px;
+            }
+
+            .pagina-web-section img {
+                width: 604px;
+            }
+        }
+
+        /* Mobile styles (375px) */
+        @media screen and (max-width: 768px) {
+            .back-button {
+                width: 85px;
+                height: 85px;
+                left: 8px;
+                top: 40px;
+            }
+
+            .back-button .arrow {
+                width: 35px;
+                height: 35px;
+            }
+
+            .back-button .arrow::before {
+                width: 25px;
+                height: 4px;
+                top: 15px;
+            }
+
+            .back-button .arrow::after {
+                width: 4px;
+                height: 20px;
+            }
+
+            .back-button .arrow-tip {
+                width: 4px;
+                height: 20px;
+            }
+
+            section {
+                padding: 36px 16px;
+            }
+
+            .intro-section {
+                margin-top: 154px;
+            }
+
+            .intro-section h1 {
+                font-size: 32px;
+            }
+
+            .intro-section p {
+                font-size: 20px;
+            }
+
+            .content-section {
+                gap: 50px;
+            }
+
+            .text-content {
+                max-width: 343px;
+            }
+
+            .text-content h2 {
+                font-size: 32px;
+            }
+
+            .text-content p {
+                font-size: 20px;
+            }
+
+            .img-small,
+            .img-medium,
+            .img-large,
+            .img-xlarge {
+                width: 300px;
+            }
+
+            .flyers-section {
+                margin: 60px 0;
+            }
+
+            .flyers-grid {
+                gap: 100px;
+            }
+
+            .flyers-grid img {
+                width: 300px;
+            }
+
+            .mas-trabajos-section h2 {
+                font-size: 32px;
+                margin-bottom: 80px;
+            }
+
+            .trabajos-grid {
+                gap: 80px;
+            }
+
+            .trabajos-grid img {
+                width: 300px;
+            }
+
+            .ultimos-flyers {
+                gap: 100px;
+            }
+
+            .ultimos-flyers img {
+                width: 300px;
+            }
+
+            .pagina-web-section {
+                padding: 36px 16px;
+            }
+
+            .pagina-web-section img {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Checkbox para controlar el menú (CSS puro) -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <!-- Botón de volver -->
+    <a href="Trabajos.html" class="back-button">
+       <img src="Botón de volver para atras.svg" alt="Volver">
+    </a>
+
+    <div class="container">
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h1>Los Pececitos</h1>
+            <p>
+                Fue uno de los primeros clientes que tuve<br>
+                cuando empece a estudiar diseño gráfico.<br>
+                los primeros logos fueron el de fútbol y paratriatlón,<br>
+                despues me siguio encargando y le fui diseñando lo-<br>
+                gos y otras cositas que voy a ir mostrando.
+            </p>
+        </section>
+
+        <!-- Fútbol Inclusivo -->
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Fútbol inclusivo</h2>
+                <p>
+                    Este logo fue uno de los primeros que diseñe,<br>
+                    que despues fuimos modificando.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="283710587_3226194040997042_2668390316969575027_n 1.png"
+                     alt="Fútbol inclusivo" class="img-large">
+            </div>
+        </section>
+
+        <!-- Escalada Adaptada -->
+        <section class="content-section reverse">
+            <div class="text-content">
+                <h2>Escalada adaptada</h2>
+                <p>
+                    Fue uno de los primeros pedidos del cliente<br>
+                    que por un tiempo estaba en pausa y despues<br>
+                    lo empece a desarrollar con el cliente.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="Escalada Adaptada 2.1_Mesa de trabajo 1 1.png"
+                     alt="Escalada adaptada" class="img-xlarge">
+            </div>
+        </section>
+
+        <!-- Parapowerlifting -->
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Parapowerlifting</h2>
+                <p>
+                    Este es uno de los ultimos logos que diseñe para<br>
+                    el cliente que fui moficando con el cliente y<br>
+                    encajandolo con el contorno de la aleta.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="Logo de powerlifting 3.7 (4) 1.png"
+                     alt="Parapowerlifting" class="img-xlarge">
+            </div>
+        </section>
+
+        <!-- Colonia de Los Pececitos -->
+        <section class="content-section reverse">
+            <div class="text-content">
+                <h2>Colonia de Los Pececitos</h2>
+                <p>
+                    Primero empezo como propuesta<br>
+                    despues lo empezo a pedir el cliente,<br>
+                    que fuimos creando una composición<br>
+                    de una playa.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="Colonia de Los Pececitos 2.1_Mesa de trabajo 1 1.png"
+                     alt="Colonia de Los Pececitos" class="img-large">
+            </div>
+        </section>
+
+        <!-- Tenis de Mesa -->
+        <section class="content-section">
+            <div class="text-content">
+                <h2>Para tenis de mesa</h2>
+                <p>
+                    este es el ultimo logo que me pidio el cliente,<br>
+                    primero estos dos muñequitos estaban en dos<br>
+                    opciones de logos que despues el cliente fue<br>
+                    pidiendo que lo añada los dos muñequitos en un<br>
+                    solo logo.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="Tenis de mesa 3.1_Mesa de trabajo 1 1.png"
+                     alt="Tenis de mesa" class="img-medium">
+            </div>
+        </section>
+
+        <!-- Cartel de Los Pececitos -->
+        <section class="content-section reverse">
+            <div class="text-content">
+                <h2>Cartel de Los pececitos</h2>
+                <p>
+                    Llegamos a la parte de Los Carteles que<br>
+                    el cliente me pidio y despues le encanto.
+                </p>
+            </div>
+            <div class="image-content">
+                <img src="Cartel de Los Pececitos_Mesa de trabajo 1 1.png"
+                     alt="Cartel de Los Pececitos" class="img-xlarge">
+            </div>
+        </section>
+
+        <!-- Flyers de las disciplinas -->
+        <section class="flyers-section">
+            <div class="flyers-grid">
+                <img src="Flyer de powerlifting_Mesa de trabajo 1 1.png"
+                     alt="Flyer de powerlifting">
+                <img src="Flyer de Natación_Mesa de trabajo 1 1.png"
+                     alt="Flyer de Natación">
+                <img src="Flyer de Ciclismo_Mesa de trabajo 1 1.png"
+                     alt="Flyer de Ciclismo">
+                <img src="Flyer de canotaje_Mesa de trabajo 1 1.png"
+                     alt="Flyer de canotaje">
+                <img src="Flyer de atletismo_Mesa de trabajo 1 1.png"
+                     alt="Flyer de atletismo">
+            </div>
+            <div class="flyers-intro">
+                <h2>Flyers de las disciplina de<br>Los Pececitos</h2>
+                <p>
+                    El cliente fue pidiendo estos 5 flyers<br>
+                    del mismo estilo y composición<br>
+                    del cartel de Los Pececitos
+                </p>
+            </div>
+        </section>
+
+        <!-- Más trabajos -->
+        <section class="mas-trabajos-section">
+            <h2>Mas trabajos</h2>
+            <div class="trabajos-grid">
+                <img src="Flyer 3.8_Mesa de trabajo 1 1.png"
+                     alt="Flyer 3.8">
+                <img src="Flyer de fideos y ravioles 4_Mesa de trabajo 1 1.png"
+                     alt="Flyer de fideos y ravioles">
+                <img src="Flyer de venta de pastas 1_Mesa de trabajo 1 1.png"
+                     alt="Flyer de venta de pastas">
+            </div>
+        </section>
+
+        <!-- Últimos Flyers -->
+        <section class="ultimos-flyers">
+            <img src="Flyer de venta de bandejas materas_Mesa de trabajo 1 4.png"
+                 alt="Flyer de venta de bandejas materas">
+            <img src="Flyer de la remera de Los Pececitos_Mesa de trabajo 1 1.png"
+                 alt="Flyer de la remera de Los Pececitos">
+        </section>
+
+        <!-- Página web de Los Pececitos -->
+        <section class="pagina-web-section">
+            <img src="Mockup de pagina web 1.png"
+                 alt="Mockup de pagina web">
+        </section>
+    </div>
+
+    
+</body>
+</html>

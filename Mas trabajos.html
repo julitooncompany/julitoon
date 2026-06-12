@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mas trabajos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header - absolute */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 16px;
+        }
+
+        .back-button {
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 167px;
+            padding: 36px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 215px;
+            padding-bottom: 100px;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 900;
+            color: black;
+            text-align: center;
+            width: 100%;
+            line-height: normal;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 215px;
+            width: 100%;
+        }
+
+        .gallery-item {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Tablet - 834px */
+        @media screen and (min-width: 376px) and (max-width: 834px) {
+            .header {
+                padding: 25px 100px;
+            }
+
+            .back-button {
+                width: 118px;
+                height: 118px;
+            }
+
+            .main-content {
+                margin-top: 345px;
+                padding: 36px 100px;
+            }
+
+            .title {
+                font-size: 64px;
+            }
+
+            .gallery-item {
+                max-width: 470px;
+            }
+        }
+
+        /* Desktop - 1440px */
+        @media screen and (min-width: 835px) {
+            .header {
+                padding: 25px 100px;
+            }
+
+            .back-button {
+                width: 148px;
+                height: 148px;
+            }
+
+            .main-content {
+                margin-top: 345px;
+                padding: 36px 200px;
+            }
+
+            .title {
+                font-size: 96px;
+            }
+
+            .gallery-item {
+                max-width: 830px;
+            }
+        }
+
+        /* Smooth transitions between breakpoints */
+        @media screen and (min-width: 376px) and (max-width: 834px) {
+            .back-button {
+                width: calc(66px + (118 - 66) * ((100vw - 376px) / (834 - 376)));
+                height: calc(66px + (118 - 66) * ((100vw - 376px) / (834 - 376)));
+            }
+
+            .title {
+                font-size: calc(32px + (64 - 32) * ((100vw - 376px) / (834 - 376)));
+            }
+
+            .gallery-item {
+                max-width: calc(300px + (470 - 300) * ((100vw - 376px) / (834 - 376)));
+            }
+        }
+
+        @media screen and (min-width: 835px) and (max-width: 1440px) {
+            .back-button {
+                width: calc(118px + (148 - 118) * ((100vw - 835px) / (1440 - 835)));
+                height: calc(118px + (148 - 118) * ((100vw - 835px) / (1440 - 835)));
+            }
+
+            .title {
+                font-size: calc(64px + (96 - 64) * ((100vw - 835px) / (1440 - 835)));
+            }
+
+            .gallery-item {
+                max-width: calc(470px + (830 - 470) * ((100vw - 835px) / (1440 - 835)));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Checkbox para controlar el menú (CSS puro) -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <!-- Header -->
+    <header class="header">
+        <a href="Trabajos.html" class="back-button" aria-label="Volver atrás">
+            <img src="Botón de volver para atras.svg" alt="botón de volver para atrás">
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="title">Mas trabajos</h1>
+
+        <div class="gallery">
+            <!-- Imagen 1: Encuentro para nuevos -->
+            <div class="gallery-item">
+                <img src="Encuentro para nuevos_Mesa de trabajo 1 1.jpg" alt="Encuentro para nuevos">
+            </div>
+
+            <!-- Imagen 2: Reunión de Mujeres -->
+            <div class="gallery-item">
+                <img src="Reunión de Mujeres_Mesa de trabajo 1 1.jpg" alt="Reunión de Mujeres">
+            </div>
+
+            <!-- Imagen 3: Tarjeta de invitación de Maite y Tomas -->
+            <div class="gallery-item">
+                <img src="Tarjeta de invitación de Maite y tomas 3_Mesa de trabajo 1 1.jpg" alt="Tarjeta de invitación de Maite y Tomas">
+            </div>
+
+            <!-- Imagen 4: Tarjeta virtual de invitación al cumple -->
+            <div class="gallery-item">
+                <img src="Tarjeta virtual de invitación al cumple de Maite y Tomas 3-1 1.jpg" alt="Tarjeta virtual de invitación al cumple de Maite y Tomas">
+            </div>
+
+            <!-- Imagen 5: Tarjeta de invitación 80 años de Alina -->
+            <div class="gallery-item">
+                <img src="Tarjeta de invitación virtual de los 80 años de Alina_Mesa de trabajo 1 1.jpg" alt="Tarjeta de invitación virtual de los 80 años de Alina">
+            </div>
+
+            <!-- Imagen 6: Memi 15 blanco -->
+            <div class="gallery-item">
+                <img src="Memi 15 blanco 2 1.jpg" alt="Memi 15 blanco">
+            </div>
+
+            <!-- Imagen 7: Reuniones de los domingos -->
+            <div class="gallery-item">
+                <img src="Reuniones de los domingos_Mesa de trabajo 1 1.jpg" alt="Reuniones de los domingos">
+            </div>
+
+            <!-- Imagen 8: Flyer de encuentro para nuevos -->
+            <div class="gallery-item">
+                <img src="Flyer de encuentro para nuevos_Mesa de trabajo 1 1.jpg" alt="Flyer de encuentro para nuevos">
+            </div>
+        </div>
+    </main>
+
+    
+</body>
+</html>
