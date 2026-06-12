@@ -1,0 +1,781 @@
+/* Importar fuente */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Figtree', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Container principal */
+.inicio {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 1700px;
+}
+
+/* Imagen de fondo */
+.background-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+/* SVG Full */
+.svg-full {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Nav Menu */
+.nav-menu {
+    position: absolute;
+    display: flex;
+    height: 128px;
+    align-items: center;
+    justify-content: space-between;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: clip;
+    padding: 25px 200px;
+    top: 0;
+    width: 100%;
+    max-width: 1441px;
+}
+
+.boton-menu {
+    position: relative;
+    flex-shrink: 0;
+    width: 76.2px;
+    height: 76.2px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1001;
+}
+
+.boton-menu:hover {
+    transform: scale(1.1);
+}
+
+/* Label para el botón hamburguesa */
+.boton-menu label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.logo {
+    height: 96px;
+    position: relative;
+    flex-shrink: 0;
+    width: 102px;
+}
+
+/* Bienvenido */
+.bienvenido-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 36px 200px;
+    top: 209px;
+    width: 100%;
+    max-width: 1442px;
+}
+
+.bienvenido {
+    background-color: #fcee21;
+    height: 253px;
+    position: relative;
+    border-radius: 50px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.bienvenido-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.bienvenido-content {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    gap: 11.675px;
+    align-items: center;
+    font-style: normal;
+    padding: 36px 16px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: #2e3192;
+    text-align: center;
+}
+
+.bienvenido-title {
+    height: 37px;
+    line-height: normal;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 32px;
+    width: 343px;
+    max-width: 100%;
+}
+
+.bienvenido-text {
+    height: 78px;
+    line-height: 0;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 20px;
+    width: 670px;
+    max-width: 100%;
+}
+
+.bienvenido-text p {
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+/* Servicios de diseño */
+.servicios-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 36px 200px;
+    top: 534px;
+    width: 100%;
+    max-width: 1441px;
+}
+
+.servicio-diseno {
+    background-color: #3fa9f5;
+    height: 253px;
+    position: relative;
+    border-radius: 50px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.servicio-content {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    gap: 17.895px;
+    align-items: flex-start;
+    font-style: normal;
+    padding: 24px 16px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+}
+
+.servicio-title {
+    line-height: normal;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 32px;
+    width: 100%;
+}
+
+.servicio-text {
+    line-height: 0;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 20px;
+    width: 100%;
+}
+
+.servicio-text p {
+    line-height: normal;
+}
+
+/* Sobre Juli Toon */
+.section-sobre-mi {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    height: 648px;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 36px 200px;
+    top: 859px;
+    width: 100%;
+    max-width: 1442px;
+}
+
+.sobre-juli-toon {
+    background-color: #fcee21;
+    height: 562px;
+    position: relative;
+    border-radius: 50px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.sobre-juli-inner {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.sobre-juli-content {
+    display: flex;
+    gap: 44px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.foto-container {
+    flex: 1 0 0;
+    height: 100%;
+    min-height: 1px;
+    min-width: 1px;
+    position: relative;
+    border-radius: 50px;
+}
+
+.foto-perfil {
+    position: absolute;
+    background-clip: padding-box;
+    border: 0;
+    border-color: transparent;
+    border-style: solid;
+    inset: 0;
+    max-width: none;
+    object-fit: cover;
+    pointer-events: none;
+    border-radius: 50px;
+    width: 100%;
+    height: 100%;
+}
+
+.frame {
+    position: relative;
+    flex-shrink: 0;
+    width: 548px;
+    max-width: 100%;
+}
+
+.frame-content {
+    background-clip: padding-box;
+    border: 0;
+    border-color: transparent;
+    border-style: solid;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    gap: 44px;
+    align-items: center;
+    font-style: normal;
+    position: relative;
+    color: #2e3192;
+    font-size: 32px;
+    width: 100%;
+}
+
+.sobre-title {
+    line-height: normal;
+    min-width: 100%;
+    position: relative;
+    flex-shrink: 0;
+    width: min-content;
+}
+
+.sobre-text {
+    line-height: 0;
+    position: relative;
+    flex-shrink: 0;
+    width: 548px;
+    max-width: 100%;
+}
+
+.sobre-text p {
+    line-height: normal;
+    margin-bottom: 0;
+}
+
+/* Footer */
+.footer-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 36px 200px;
+    top: 1531px;
+    width: 100%;
+    max-width: 1441px;
+}
+
+.footer {
+    background-color: #2e3192;
+    position: relative;
+    border-radius: 60px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 16px;
+    position: relative;
+    width: 100%;
+}
+
+.footer-text {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    line-height: normal;
+    font-style: normal;
+    position: relative;
+    flex-shrink: 0;
+    font-size: 32px;
+    color: white;
+    white-space: nowrap;
+}
+
+
+/* ====================================
+   MENÚ DE NAVEGACIÓN
+   ==================================== */
+
+/* Checkbox oculto para controlar el menú */
+#menu-toggle {
+    display: none;
+}
+
+/* Contenedor del menú — empieza fuera de pantalla por la izquierda */
+.menu-navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #fcee21;
+    box-shadow: 0px 30px 54px 0px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease,
+                visibility 0s linear 0.4s;
+}
+
+/* Menú activo cuando el checkbox está marcado — desliza desde la izquierda */
+#menu-toggle:checked ~ .menu-navegacion {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease,
+                visibility 0s linear 0s;
+}
+
+/* Los ítems del menú aparecen con retardo escalonado */
+#menu-toggle:checked ~ .menu-navegacion .menu-item:nth-child(1) {
+    animation: menuItemIn 0.35s ease 0.15s both;
+}
+#menu-toggle:checked ~ .menu-navegacion .menu-item:nth-child(2) {
+    animation: menuItemIn 0.35s ease 0.23s both;
+}
+#menu-toggle:checked ~ .menu-navegacion .menu-item:nth-child(3) {
+    animation: menuItemIn 0.35s ease 0.31s both;
+}
+
+@keyframes menuItemIn {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Frame del menú */
+.menu-frame {
+    display: flex;
+    flex-direction: column;
+    gap: 37px;
+    align-items: flex-start;
+    width: 439px;
+    max-width: 90%;
+}
+
+/* Item del menú */
+.menu-item {
+    display: inline-grid;
+    grid-template-columns: max-content;
+    grid-template-rows: max-content;
+    place-items: start;
+    position: relative;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-item:hover {
+    transform: translateX(10px);
+}
+
+.menu-item:visited {
+    color: inherit;
+}
+
+/* Icono del menú */
+.menu-icon {
+    grid-column: 1;
+    grid-row: 1;
+    margin-left: 0;
+    margin-top: 0;
+    position: relative;
+    width: 107px;
+    height: 107px;
+}
+
+/* Texto del menú */
+.menu-text {
+    grid-column: 1;
+    grid-row: 1;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    line-height: normal;
+    margin-left: 107px;
+    margin-top: 10px;
+    font-style: normal;
+    position: relative;
+    color: #2e3192;
+    font-size: 71px;
+    white-space: nowrap;
+}
+
+/* Botón cerrar */
+.boton-cerrar {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    left: calc(50% + 227px);
+    width: 89px;
+    height: 89px;
+    top: 25px;
+    background: none;
+    border: none;
+    padding: 0;
+    transition: transform 0.2s ease;
+}
+
+.boton-cerrar label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.boton-cerrar:hover {
+    transform: rotate(90deg);
+}
+
+/* ====================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ==================================== */
+
+/* ============================================
+   TABLET - 768px a 1023px
+   ============================================ */
+@media (max-width: 1023px) and (min-width: 768px) {
+    /* Cambiar imagen de fondo para tablet */
+    .background-img {
+        content: url('Diseño de patrones tablet_Mesa de trabajo 1.jpg');
+    }
+
+    /* Ajustar nav menu para tablet */
+    .nav-menu {
+        max-width: 838px;
+        padding: 25px 100px;
+    }
+
+    /* Menú desplegable - Tablet (basado en NavTablet.tsx) */
+    .menu-frame {
+        gap: 37px;
+        width: 439px;
+        height: auto;
+    }
+
+    .menu-icon {
+        width: 107px;
+        height: 107px;
+    }
+
+    .menu-text {
+        font-size: 71px;
+        margin-left: 107px;
+        margin-top: 10px;
+    }
+
+    /* Ajustar texto del segundo item (Trabajos) */
+    .menu-item:nth-child(2) .menu-text {
+        margin-top: 21px;
+    }
+
+    /* Ajustar texto del tercer item (Contacto) */
+    .menu-item:nth-child(3) .menu-text {
+        margin-top: 11px;
+    }
+
+    .boton-cerrar {
+        left: 454px;
+        top: 25px;
+        width: 89px;
+        height: 89px;
+    }
+
+    /* Ajustar wrappers para tablet */
+    .bienvenido-wrapper,
+    .servicios-wrapper {
+        max-width: 836px;
+        padding: 16px 100px;
+    }
+
+    .section-sobre-mi {
+        max-width: 836px;
+        padding: 36px 100px;
+    }
+
+    .footer-wrapper {
+        max-width: 838px;
+        padding: 36px 100px;
+    }
+
+    /* Ajustar texto de bienvenido para tablet */
+    .bienvenido-text {
+        width: 343px;
+    }
+}
+
+/* ============================================
+   MÓVIL - Hasta 767px
+   ============================================ */
+@media (max-width: 767px) {
+    /* Cambiar imagen de fondo para móvil */
+    .background-img {
+        content: url('Diseño de patrones celu_Mesa de trabajo 1.jpg');
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+    }
+
+    /* Ajustar contenedor principal */
+    .inicio {
+        min-height: 1900px;
+        height: auto;
+    }
+
+    /* Ajustar nav menu para móvil */
+    .nav-menu {
+        max-width: 375px;
+        padding: 25px 16px;
+    }
+
+    /* Ajustar wrappers para móvil */
+    .bienvenido-wrapper {
+        max-width: 375px;
+        padding: 0;
+        top: 188px;
+    }
+
+    .bienvenido {
+        max-width: 375px;
+    }
+
+    .bienvenido-text {
+        width: 343px;
+    }
+
+    .servicios-wrapper {
+        max-width: 375px;
+        padding: 0;
+        top: 484px;
+    }
+
+    .servicio-diseno {
+        max-width: 375px;
+    }
+
+    /* Cambiar layout de "Sobre Juli Toon" a vertical */
+    .section-sobre-mi {
+        max-width: 375px;
+        padding: 0;
+        top: 780px;
+        height: auto;
+    }
+
+    .sobre-juli-toon {
+        height: auto;
+        max-width: 375px;
+        padding: 24px 16px;
+    }
+
+    .sobre-juli-inner {
+        height: auto;
+    }
+
+    .sobre-juli-content {
+        flex-direction: column;
+        gap: 44px;
+        height: auto;
+    }
+
+    .foto-container {
+        flex: none;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 343 / 491;
+    }
+
+    .frame {
+        width: 100%;
+    }
+
+    .frame-content {
+        gap: 44px;
+    }
+
+    .sobre-text {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Ajustar footer para móvil */
+    .footer-wrapper {
+        max-width: 375px;
+        padding: 25px 16px;
+        top: 1761px;
+        bottom: auto;
+    }
+
+    .footer {
+        width: 100%;
+    }
+
+    /* Ajustar menú de navegación para móvil (basado en NavCelu.tsx) */
+    .menu-frame {
+        gap: 25.916px;
+        width: 330px;
+        max-width: 90%;
+        height: auto;
+    }
+
+    .menu-icon {
+        width: 79.476px;
+        height: 79.476px;
+    }
+
+    .menu-text {
+        font-size: 61.335px;
+        margin-left: 75.16px;
+        margin-top: 4.32px;
+    }
+
+    /* Ajustar texto del segundo item (Trabajos) */
+    .menu-item:nth-child(2) .menu-text {
+        margin-left: 79.476px;
+        margin-top: 2.59px;
+    }
+
+    /* Ajustar texto del tercer item (Contacto) */
+    .menu-item:nth-child(3) .menu-text {
+        margin-left: 79.476px;
+        margin-top: 5.18px;
+    }
+
+    .boton-cerrar {
+        left: 296px;
+        top: 25px;
+        width: 89px;
+        height: 89px;
+    }
+}
+
+/* ============================================
+   MÓVIL PEQUEÑO - Hasta 375px
+   ============================================ */
+@media (max-width: 375px) {
+    .nav-menu {
+        padding: 25px 8px;
+    }
+
+    .menu-frame {
+        width: 290px;
+    }
+
+    .menu-text {
+        font-size: 52px;
+        margin-left: 70px;
+    }
+
+    .menu-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .boton-cerrar {
+        left: 260px;
+    }
+}
