@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukus Arte Vivo - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: white;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 900;
+            font-style: normal;
+            color: black;
+            height: 1770px;
+            overflow-x: hidden;
+        }
+
+        /* ── Contenedor principal ─────────────────────────────────────── */
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header ──────────────────────────────────────────────────── */
+        header {
+            padding: 25px 200px;
+            display: flex;
+            align-items: center;
+            overflow: clip;
+        }
+
+        .back-button {
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            line-height: 0;
+            text-decoration: none;
+        }
+        .back-button:hover { transform: scale(1.05); }
+
+        /* Un SVG por breakpoint — se muestra/oculta con CSS */
+        .btn-desktop { width: 148px; height: 148px; display: block; }
+        .btn-tablet  { width: 118px; height: 118px; display: none; }
+        .btn-mobile  { width: 66px;  height: 66px;  display: none; }
+
+        /* ── Sección principal (desktop: notebook frame) ─────────────── */
+        /* Frame: w-[1440px] px-[200px] py-[36px], centrado verticalmente */
+        .section-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 36px 200px;
+        }
+
+        /* Frame interno: w-[343px] en Figma, pero el texto desborda a 1240px.
+           En HTML usamos width: 100% para que el texto fluya dentro del padding. */
+        .text-frame {
+            display: flex;
+            flex-direction: column;
+            gap: 110px;
+            align-items: flex-start;
+            width: 1440px;
+            padding: 36px 100px;
+        }
+
+        .titulo {
+            font-size: 32px;
+            line-height: normal;
+            font-weight: 900;
+            font-style: normal;
+            width: 100%;
+        }
+
+        .descripcion {
+            font-size: 20px;
+            font-weight: 900;
+            font-style: normal;
+            width: 420px;
+            height: 144px;
+            display: flex;
+            text-align: left;
+        }
+
+        .video-container {
+            margin-left: 100px;
+            display: flex;
+            justify-content: flex-end;
+            width: 300px;
+            height: 300px;
+        }
+
+        /* ── Tablet (768px – 1023px): SukusArteVivoTablet frame ──────── */
+        @media screen and (max-width: 1023px) and (min-width: 768px) {
+            header { padding: 25px 100px; }
+
+            .btn-desktop { display: none; }
+            .btn-tablet  { display: block; }
+            .btn-mobile  { display: none; }
+
+            /* Tablet: items-center, w-[834px] px-[100px] */
+            .section-content {
+                padding: 36px 100px;
+                justify-content: center;
+            }
+
+            .text-frame { align-items: center; }
+            .titulo     { text-align: center; }
+            .descripcion p { text-align: center; }
+        }
+
+        /* ── Móvil (≤767px): SukusArteVivoCelu frame ────────────────── */
+        @media screen and (max-width: 767px) {
+            header { padding: 25px 16px; }
+
+            .btn-desktop { display: none; }
+            .btn-tablet  { display: none; }
+            .btn-mobile  { display: block; }
+
+            /* Celu: items-center, w-[375px] px-[16px] */
+            .section-content { padding: 36px 16px; }
+
+            .text-frame { align-items: center; }
+            .titulo     { font-size: 32px; text-align: center; }
+            .descripcion p { font-size: 20px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- ── Header ───────────────────────────────────────────────── -->
+        <header>
+            <a href="Trabajos.html" class="back-button" aria-label="Volver a Trabajos">
+
+                <!-- Desktop 148×148 — svg-ddl5eqjss1: p3567be00 + p25007160 -->
+                <svg class="btn-desktop" fill="none" preserveAspectRatio="none" viewBox="0 0 148 148">
+                    <g clip-path="url(#clip-d)">
+                        <path d="M133.753 39.5709L108.447 14.2648C89.4271 -4.75468 58.5904 -4.75468 39.5708 14.2648L14.2648 39.5709C-4.75475 58.5904 -4.75475 89.4272 14.2648 108.447L39.5708 133.753C58.5904 152.772 89.4271 152.772 108.447 133.753L133.753 108.447C152.772 89.4272 152.772 58.5904 133.753 39.5709Z" fill="#2E3192"/>
+                        <mask id="mask-d" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="96" height="96" x="26" y="26">
+                            <rect fill="#D9D9D9" height="94.1818" width="94.1818" x="26.9091" y="26.9091"/>
+                        </mask>
+                        <g mask="url(#mask-d)">
+                            <path d="M57.6163 77.9242L79.592 99.9L74 105.394L42.6061 74L74 42.6061L79.592 48.1L57.6163 70.0758H105.394V77.9242H57.6163Z" fill="#FCEE21"/>
+                        </g>
+                    </g>
+                    <defs><clipPath id="clip-d"><rect fill="white" height="148" width="148"/></clipPath></defs>
+                </svg>
+
+                <!-- Tablet 118×118 — svg-gyim4xrtce: p1b1e1d00 + p25bb3c00 -->
+                <svg class="btn-tablet" fill="none" preserveAspectRatio="none" viewBox="0 0 118 118">
+                    <g clip-path="url(#clip-t)">
+                        <path d="M106.641 31.5498L86.4642 11.3733C71.3 -3.79089 46.7139 -3.79089 31.5497 11.3733L11.3733 31.5498C-3.79095 46.714 -3.79095 71.3001 11.3733 86.4643L31.5497 106.641C46.7139 121.805 71.3 121.805 86.4642 106.641L106.641 86.4643C121.805 71.3001 121.805 46.714 106.641 31.5498Z" fill="#2E3192"/>
+                        <mask id="mask-t" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="76" height="76" x="21" y="21">
+                            <rect fill="#D9D9D9" height="75.0909" width="75.0909" x="21.4545" y="21.4545"/>
+                        </mask>
+                        <g mask="url(#mask-t)">
+                            <path d="M45.9373 62.1288L63.4585 79.65L59 84.0303L33.9697 59L59 33.9697L63.4585 38.35L45.9373 55.8712H84.0303V62.1288H45.9373Z" fill="#FCEE21"/>
+                        </g>
+                    </g>
+                    <defs><clipPath id="clip-t"><rect fill="white" height="118" width="118"/></clipPath></defs>
+                </svg>
+
+                <!-- Móvil 66×66 — svg-tar9tet67r: p86fbb00 + p11e8c100 -->
+                <svg class="btn-mobile" fill="none" preserveAspectRatio="none" viewBox="0 0 66 66">
+                    <g clip-path="url(#clip-m)">
+                        <path d="M59.6465 17.6465L48.3613 6.36135C39.8797 -2.12033 26.1281 -2.12033 17.6465 6.36135L6.36132 17.6465C-2.12036 26.1282 -2.12036 39.8797 6.36132 48.3614L17.6465 59.6465C26.1281 68.1282 39.8797 68.1282 48.3613 59.6465L59.6465 48.3614C68.1282 39.8797 68.1282 26.1282 59.6465 17.6465Z" fill="#2E3192"/>
+                        <mask id="mask-m" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="42" height="42" x="12" y="12">
+                            <rect fill="#D9D9D9" height="42" width="42" x="12" y="12"/>
+                        </mask>
+                        <g mask="url(#mask-m)">
+                            <path d="M25.6938 34.75L35.4938 44.55L33 47L19 33L33 19L35.4938 21.45L25.6938 31.25H47V34.75H25.6938Z" fill="#FCEE21"/>
+                        </g>
+                    </g>
+                    <defs><clipPath id="clip-m"><rect fill="white" height="66" width="66"/></clipPath></defs>
+                </svg>
+
+            </a>
+        </header>
+
+        <!-- ── Sección de contenido ──────────────────────────────────── -->
+        <section class="section-content">
+            <div class="text-frame">
+                <p class="titulo">Sukus Arte Vivo
+                <div class="descripcion">
+                    <p>Gracias al algoritmo
+                    de los reels en instagram
+                    tuve una cliente nueva
+                    que encargo este video
+                    publicitario para el día del amigo.</p>
+                </div>
+            </div>
+           <div class="video-container">
+            <video controls src="Video publicitario para Sukus Arte Vivo 1.2.mp4"></video>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
