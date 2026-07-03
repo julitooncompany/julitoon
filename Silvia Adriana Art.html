@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silvia Adriana Art - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 900;
+            color: black;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header con botón de volver */
+        header {
+            padding: 25px 100px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .back-button {
+            width: 148px;
+            height: 148px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .back-button svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Sección Primer Logo */
+        .section-primer-logo {
+            display: flex;
+            gap: 45px;
+            padding: 36px 100px;
+            align-items: flex-start;
+            margin-top: 0;
+        }
+
+        .text-content {
+            flex: 0 0 508px;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+        }
+
+        .text-content h1 {
+            font-size: 32px;
+            line-height: normal;
+            font-weight: 900;
+        }
+
+        .text-content p {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 900;
+        }
+
+        .image-container {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Sección Segundo Logo */
+        .section-segundo-logo {
+            display: flex;
+            gap: 39px;
+            padding: 36px 100px;
+            align-items: flex-start;
+            margin-top: 100px;
+        }
+
+        .text-content-segundo {
+            flex: 0 0 343px;
+            display: flex;
+            flex-direction: column;
+            gap: 39px;
+        }
+
+        .text-content-segundo h2 {
+            font-size: 32px;
+            line-height: normal;
+            font-weight: 900;
+        }
+
+        .text-content-segundo p {
+            font-size: 20px;
+            line-height: 1.4;
+            font-weight: 900;
+        }
+
+        /* Tablet: 768px - 1024px */
+        @media screen and (max-width: 1024px) {
+            header {
+                padding: 25px 100px;
+            }
+
+            .back-button {
+                width: 118px;
+                height: 118px;
+            }
+
+            .section-primer-logo {
+                padding: 36px 100px;
+                gap: 45px;
+            }
+
+            .text-content {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .image-container {
+                flex: 1;
+            }
+
+            .section-segundo-logo {
+                padding: 36px 100px;
+                gap: 39px;
+                margin-top: 50px;
+            }
+
+            .text-content-segundo {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+
+        /* Mobile: menos de 768px */
+        @media screen and (max-width: 767px) {
+            header {
+                padding: 25px 16px;
+            }
+
+            .back-button {
+                width: 66px;
+                height: 66px;
+            }
+
+            .section-primer-logo {
+                flex-direction: column;
+                padding: 36px 16px;
+                gap: 45px;
+                margin-top: 20px;
+            }
+
+            .text-content {
+                flex: 1;
+                width: 100%;
+            }
+
+            .image-container {
+                width: 100%;
+                order: -1;
+            }
+
+            .section-segundo-logo {
+                flex-direction: column;
+                padding: 36px 16px;
+                gap: 39px;
+                margin-top: 50px;
+            }
+
+            .text-content-segundo {
+                flex: 1;
+                width: 100%;
+            }
+
+            .text-content-segundo h2 {
+                text-align: center;
+            }
+        }
+
+        /* Ajustes adicionales para pantallas muy pequeñas */
+        @media screen and (max-width: 375px) {
+            .text-content h1,
+            .text-content-segundo h2 {
+                font-size: 28px;
+            }
+
+            .text-content p,
+            .text-content-segundo p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Checkbox para controlar el menú (CSS puro) -->
+    <input type="checkbox" id="menu-toggle" />
+
+    <div class="container">
+        <!-- Header con botón de volver -->
+        <header>
+            <a href="Trabajos.html" class="back-button">
+                <svg fill="none" preserveAspectRatio="none" viewBox="0 0 148 148">
+                    <g clip-path="url(#clip0)">
+                        <path d="M133.753 39.5709L108.447 14.2648C89.4271 -4.75468 58.5904 -4.75468 39.5708 14.2648L14.2648 39.5709C-4.75475 58.5904 -4.75475 89.4272 14.2648 108.447L39.5708 133.753C58.5904 152.772 89.4271 152.772 108.447 133.753L133.753 108.447C152.772 89.4272 152.772 58.5904 133.753 39.5709Z" fill="#2E3192"/>
+                        <g id="arrow_back">
+                            <mask id="mask0" maskUnits="userSpaceOnUse" style="mask-type: alpha" width="96" height="96" x="26" y="26">
+                                <rect fill="#D9D9D9" height="94.1818" width="94.1818" x="26.9091" y="26.9091"/>
+                            </mask>
+                            <g mask="url(#mask0)">
+                                <path d="M57.6163 77.9242L79.592 99.9L74 105.394L42.6061 74L74 42.6061L79.592 48.1L57.6163 70.0758H105.394V77.9242H57.6163Z" fill="#FCEE21"/>
+                            </g>
+                        </g>
+                    </g>
+                    <defs>
+                        <clipPath id="clip0">
+                            <rect fill="white" height="148" width="148"/>
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+        </header>
+
+        <!-- Sección Primer Logo -->
+        <section class="section-primer-logo">
+            <div class="text-content">
+                <h1>Silvia Adriana Art</h1>
+                <p>
+                    Fue la segunda cliente<br>
+                    pero me habia encargado<br>
+                    otra cosa antes de encargarme el<br>
+                    logo.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="Rectangle 15.jpg" alt="Primer logo de Silvia Adriana Art">
+            </div>
+        </section>
+
+        <!-- Sección Segundo Logo -->
+        <section class="section-segundo-logo">
+            <div class="text-content-segundo">
+                <h2>Actualización de logo</h2>
+                <p>
+                    Como a la cliente no<br>
+                    le gusto el logo pidio<br>
+                    una actualización.
+                </p>
+            </div>
+            <div class="image-container">
+                <img src="Rectangle 16.jpg" alt="Logo actualizado de Silvia Adriana Art">
+            </div>
+        </section>
+    </div>
+
+</body>
+</html>
+

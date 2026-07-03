@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se ha enviado correctamente - Juli Toon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #2e3192;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 900;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 29px;
+            align-items: center;
+            text-align: center;
+            padding: 36px 200px;
+        }
+
+        .check-mobile { display: none; }
+        .check-large  { display: block; width: 300px; height: 300px; }
+
+        .mensaje {
+            color: white;
+            font-size: 32px;
+            font-weight: 900;
+            line-height: normal;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Tablet */
+        @media screen and (max-width: 1023px) and (min-width: 768px) {
+            .contenido { padding: 36px 100px; }
+            .mensaje { white-space: normal; }
+        }
+
+        /* Móvil */
+        @media screen and (max-width: 767px) {
+            .contenido { padding: 36px 16px; }
+            .mensaje { white-space: normal; }
+            .check-mobile { display: block; width: 117.769px; height: 117.769px; }
+            .check-large  { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenido">
+        <!-- Check icon — móvil (117.769×117.769) -->
+        <svg class="check-mobile" fill="none" viewBox="0 0 117.769 117.769" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <mask id="mask-mobile" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="118" height="118" x="0" y="0">
+                    <rect fill="#D9D9D9" height="116.769" width="116.769" x="0.5" y="0.500061" />
+                </mask>
+            </defs>
+            <g mask="url(#mask-mobile)">
+                <path d="M98.1694 36.31L46.8618 87.6176L19.5991 60.3549L25.8843 54.0698L46.5083 74.6938L46.8628 75.0473L47.2163 74.6938L91.8843 30.0239L98.1694 36.31Z" fill="#3FA9F5" />
+            </g>
+        </svg>
+
+        <!-- Check icon — tablet / desktop (300×300) -->
+        <svg class="check-large" fill="none" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <mask id="mask-large" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="300" height="300" x="0" y="0">
+                    <rect fill="#D9D9D9" height="299" width="299" x="0.5" y="0.5" />
+                </mask>
+            </defs>
+            <g mask="url(#mask-large)">
+                <path d="M251.168 92.4966L119.375 224.29L48.8318 153.747L65.9373 136.641L119.375 190.079L234.062 75.3911L251.168 92.4966Z" fill="#3FA9F5" />
+            </g>
+        </svg>
+
+        <p class="mensaje">Se ha enviado correctamente</p>
+    </div>
+</body>
+</html>
