@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educación - Juli Toon</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: #fff;
+            font-family: 'Figtree', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== BOTÓN VOLVER ===== */
+        .boton-volver {
+            position: absolute;
+            left: 100px;
+            top: 25px;
+            width: 148px;
+            height: 148px;
+            cursor: pointer;
+            z-index: 1000;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .boton-volver:hover {
+            transform: scale(1.08);
+        }
+
+        .boton-volver svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* ===== HEADER (solo fondo azul) ===== */
+        .edu-header {
+            background: #3fa9f5;
+            height: 198px;
+            width: 100%;
+        }
+
+        /* ===== SECCIONES ===== */
+        .edu-section {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 117px;
+            padding: 96px 43px;
+        }
+
+        .edu-section--azul     { background: #2e3192; }
+        .edu-section--amarillo { background: #fcee21; }
+        .edu-section--verde    { background: #7ac943; padding-top: 64px; padding-bottom: 64px; }
+
+        .edu-cert {
+            flex: 1 1 0;
+            min-width: 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .edu-cert img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        /* ===== TABLET (768px – 1023px) ===== */
+        @media (max-width: 1023px) and (min-width: 768px) {
+            .boton-volver {
+                left: 100px;
+                top: 25px;
+                width: 118px;
+                height: 118px;
+            }
+
+            .edu-header {
+                height: 168px;
+            }
+
+            .edu-section {
+                gap: 68px;
+                padding: 56px 25px;
+            }
+
+            .edu-section--verde {
+                padding-top: 37px;
+                padding-bottom: 37px;
+            }
+        }
+
+        /* ===== CELULAR (< 768px) ===== */
+        @media (max-width: 767px) {
+            .boton-volver {
+                left: 16px;
+                top: 25px;
+                width: 66px;
+                height: 66px;
+            }
+
+            .edu-header {
+                height: 116px;
+            }
+
+            .edu-section {
+                gap: 44px;
+                padding: 36px 16px;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                flex-wrap: nowrap;
+            }
+
+            .edu-section--verde {
+                padding-top: 24px;
+                padding-bottom: 24px;
+            }
+
+            .edu-cert {
+                flex: 0 0 80vw;
+                scroll-snap-align: start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Botón de volver para atrás (un solo botón, se escala con CSS) -->
+    <a href="index.html" class="boton-volver" aria-label="Volver al inicio">
+        <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <clipPath id="clip0"><rect width="148" height="148"/></clipPath>
+            <g clip-path="url(#clip0)">
+                <path d="M133.753 39.5709L108.447 14.2648C89.4271 -4.75468 58.5904 -4.75468 39.5708 14.2648L14.2648 39.5709C-4.75475 58.5904 -4.75475 89.4272 14.2648 108.447L39.5708 133.753C58.5904 152.772 89.4271 152.772 108.447 133.753L133.753 108.447C152.772 89.4272 152.772 58.5904 133.753 39.5709Z" fill="#2E3192"/>
+                <mask id="mask0" maskUnits="userSpaceOnUse" x="26" y="26" width="96" height="96" style="mask-type:alpha">
+                    <rect x="26.9091" y="26.9091" width="94.1818" height="94.1818" fill="#D9D9D9"/>
+                </mask>
+                <g mask="url(#mask0)">
+                    <path d="M57.6163 77.9242L79.592 99.9L74 105.394L42.6061 74L74 42.6061L79.592 48.1L57.6163 70.0758H105.394V77.9242H57.6163Z" fill="#FCEE21"/>
+                </g>
+            </g>
+        </svg>
+    </a>
+
+    <!-- Header azul de fondo -->
+    <div class="edu-header"></div>
+
+    <!-- SECCIÓN 1 – Azul -->
+    <section class="edu-section edu-section--azul">
+        <div class="edu-cert">
+            <img src="Julian Mignoni diseño web-01.jpg" alt="Julián Mignoni Diseño Web" />
+        </div>
+        <div class="edu-cert">
+            <img src="Certificado del curso de diseño gráfico-01.jpg" alt="Certificado Diseño Gráfico" />
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2 – Amarillo -->
+    <section class="edu-section edu-section--amarillo">
+        <div class="edu-cert">
+            <img src="DIPLOMA CapCut Julián Mignoni-01.jpg" alt="Diploma CapCut" />
+        </div>
+        <div class="edu-cert">
+            <img src="Julián Mignoni (1).jpg" alt="Julián Mignoni" />
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3 – Verde -->
+    <section class="edu-section edu-section--verde">
+        <div class="edu-cert">
+            <img src="Certificado-Introducción-a-UX-EducaciónIT-01.jpg" alt="Certificado UX EducaciónIT" />
+        </div>
+        <div class="edu-cert">
+            <img src="Certificado-Desarrollo-Web-con-HTML-EducaciónIT (1).jpeg" alt="Certificado HTML EducaciónIT" />
+        </div>
+    </section>
+
+</body>
+</html>

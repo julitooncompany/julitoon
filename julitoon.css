@@ -18,7 +18,7 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 1700px;
+    min-height: 1723px;
 }
 
 /* Imagen de fondo */
@@ -31,6 +31,11 @@ body {
     object-fit: cover;
     pointer-events: none;
 }
+
+/* Mostrar solo el fondo correspondiente al breakpoint */
+.bg-celu   { display: none; }
+.bg-tablet { display: none; }
+.bg-compu  { display: block; }
 
 /* SVG Full */
 .svg-full {
@@ -226,7 +231,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     padding: 36px 200px;
-    top: 859px;
+    top: 891px;
     width: 100%;
     max-width: 1442px;
 }
@@ -329,6 +334,35 @@ body {
     margin-bottom: 0;
 }
 
+
+/* Botón de Educación */
+.btn-educacion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #3fa9f5;
+    color: white;
+    text-decoration: none;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    line-height: normal;
+    padding: 16px 36px;
+    border-radius: 60px;
+    white-space: nowrap;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    align-self: center;
+}
+
+.btn-educacion:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+.btn-educacion svg {
+    flex-shrink: 0;
+}
+
 /* Footer */
 .footer-wrapper {
     position: absolute;
@@ -338,7 +372,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     padding: 36px 200px;
-    top: 1531px;
+    top: 1563px;
     width: 100%;
     max-width: 1441px;
 }
@@ -537,10 +571,10 @@ body {
    TABLET - 768px a 1023px
    ============================================ */
 @media (max-width: 1023px) and (min-width: 768px) {
-    /* Cambiar imagen de fondo para tablet */
-    .background-img {
-        content: url('Diseño de patrones tablet_Mesa de trabajo 1.jpg');
-    }
+    /* Fondo tablet */
+    .bg-celu   { display: none; }
+    .bg-tablet { display: block; }
+    .bg-compu  { display: none; }
 
     /* Ajustar nav menu para tablet */
     .nav-menu {
@@ -610,66 +644,80 @@ body {
    MÓVIL - Hasta 767px
    ============================================ */
 @media (max-width: 767px) {
-    /* Cambiar imagen de fondo para móvil */
+    /* Fondo móvil */
+    .bg-celu   { display: block; }
+    .bg-tablet { display: none; }
+    .bg-compu  { display: none; }
+
+    /* Imagen de fondo fija para que cubra aunque el contenido crezca */
     .background-img {
-        content: url('Diseño de patrones celu_Mesa de trabajo 1.jpg');
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top center;
+        position: fixed;
+        height: 100vh;
     }
 
-    /* Ajustar contenedor principal */
+    /* Contenedor principal: flujo vertical */
     .inicio {
-        min-height: 1900px;
         height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 24px;
     }
 
-    /* Ajustar nav menu para móvil */
+    /* Nav menu sigue absoluto para flotar sobre el contenido */
     .nav-menu {
+        position: absolute;
         max-width: 375px;
         padding: 25px 16px;
     }
 
-    /* Ajustar wrappers para móvil */
+    /* Wrappers pasan a flujo normal (sin position absolute ni top fijo) */
     .bienvenido-wrapper {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
         max-width: 375px;
-        padding: 0;
-        top: 188px;
+        padding: 16px 16px 0;
+        margin-top: 128px;
     }
 
     .bienvenido {
-        max-width: 375px;
+        width: 100%;
     }
 
     .bienvenido-text {
-        width: 343px;
+        width: 100%;
     }
 
     .servicios-wrapper {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
         max-width: 375px;
-        padding: 0;
-        top: 484px;
+        padding: 16px 16px 0;
     }
 
     .servicio-diseno {
-        max-width: 375px;
+        width: 100%;
     }
 
-    /* Cambiar layout de "Sobre Juli Toon" a vertical */
+    /* Sobre Juli Toon: flujo normal, layout vertical */
     .section-sobre-mi {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
         max-width: 375px;
-        padding: 0;
-        top: 780px;
         height: auto;
+        padding: 16px 16px 0;
     }
 
     .sobre-juli-toon {
+        width: 100%;
         height: auto;
-        max-width: 375px;
-        padding: 24px 16px;
     }
 
     .sobre-juli-inner {
@@ -678,7 +726,7 @@ body {
 
     .sobre-juli-content {
         flex-direction: column;
-        gap: 44px;
+        gap: 24px;
         height: auto;
     }
 
@@ -694,7 +742,7 @@ body {
     }
 
     .frame-content {
-        gap: 44px;
+        gap: 24px;
     }
 
     .sobre-text {
@@ -702,12 +750,15 @@ body {
         text-align: center;
     }
 
-    /* Ajustar footer para móvil */
+    /* Footer: flujo normal, siempre al final */
     .footer-wrapper {
+        position: static;
+        transform: none;
+        left: auto;
+        width: 100%;
         max-width: 375px;
-        padding: 25px 16px;
-        top: 1761px;
-        bottom: auto;
+        padding: 16px 16px 0;
+        margin-top: 16px;
     }
 
     .footer {
