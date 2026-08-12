@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video musical de Melisa Porrini</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 25px 16px;
+        }
+
+        .back-button {
+            display: block;
+            width: 66px;
+            height: 66px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+
+        .back-button:focus {
+            outline: 2px solid #2E3192;
+            border-radius: 50%;
+        }
+
+        .back-button svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ===== MAIN CONTENT — celular (375px) ===== */
+        .main-content {
+            margin-top: 116px;
+            padding: 36px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            padding-bottom: 80px;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: 900;
+            color: black;
+            text-align: center;
+            width: 100%;
+            line-height: 36px;
+            letter-spacing: -0.75px;
+        }
+
+        .description {
+            font-size: 24px;
+            font-weight: 900;
+            color: black;
+            text-align: center;
+            line-height: 30px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 343px;
+            aspect-ratio: 16 / 9;
+            border-radius: 0;
+            overflow: hidden;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ===== TABLET — 768px+ ===== */
+        @media screen and (min-width: 768px) {
+            .header {
+                padding: 25px 100px;
+            }
+
+            .back-button {
+                width: 118px;
+                height: 118px;
+            }
+
+            .main-content {
+                margin-top: 168px;
+                padding: 36px 100px 80px;
+                flex-direction: column;
+                align-items: center;
+                gap: 0;
+            }
+
+            .title {
+                text-align: center;
+                margin-bottom: 64px;
+            }
+
+            .description {
+                text-align: center;
+                margin-bottom: 80px;
+            }
+
+            .video-wrapper {
+                max-width: 622px;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                border-radius: 8px;
+            }
+        }
+
+        /* ===== DESKTOP — 1024px+ ===== */
+        @media screen and (min-width: 1024px) {
+            .header {
+                padding: 25px 100px;
+            }
+
+            .back-button {
+                width: 148px;
+                height: 148px;
+            }
+
+            .main-content {
+                margin-top: 198px;
+                padding: 36px 200px 80px;
+                flex-direction: row;
+                align-items: flex-start;
+                gap: 48px;
+            }
+
+            .text-column {
+                flex: 1;
+                min-width: 0;
+                padding-top: 48px;
+            }
+
+            .title {
+                text-align: left;
+                margin-bottom: 64px;
+            }
+
+            .description {
+                text-align: left;
+            }
+
+            .video-column {
+                flex: 1;
+                min-width: 0;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            .video-wrapper {
+                max-width: 420px;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                border-radius: 8px;
+            }
+        }
+
+        /* ===== FLUID TRANSITIONS ===== */
+        @media screen and (min-width: 375px) and (max-width: 767px) {
+            .back-button {
+                width: calc(66px + (118 - 66) * ((100vw - 375px) / (768 - 375)));
+                height: calc(66px + (118 - 66) * ((100vw - 375px) / (768 - 375)));
+            }
+        }
+
+        @media screen and (min-width: 768px) and (max-width: 1024px) {
+            .back-button {
+                width: calc(118px + (148 - 118) * ((100vw - 768px) / (1024 - 768)));
+                height: calc(118px + (148 - 118) * ((100vw - 768px) / (1024 - 768)));
+            }
+        }
+
+        /* Ocultar columnas en mobile */
+        .text-column,
+        .video-column {
+            display: contents;
+        }
+
+        @media screen and (min-width: 1024px) {
+            .text-column,
+            .video-column {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="Mas trabajos.html" class="back-button" aria-label="Volver atras">
+            <svg viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_vid)">
+                    <path d="M133.753 39.5709L108.447 14.2648C89.4271 -4.75468 58.5904 -4.75468 39.5708 14.2648L14.2648 39.5709C-4.75475 58.5904 -4.75475 89.4272 14.2648 108.447L39.5708 133.753C58.5904 152.772 89.4271 152.772 108.447 133.753L133.753 108.447C152.772 89.4272 152.772 58.5904 133.753 39.5709Z" fill="#2E3192"/>
+                    <mask id="mask0_vid" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="26" y="26" width="96" height="96">
+                        <rect x="26.9091" y="26.9091" width="94.1818" height="94.1818" fill="#D9D9D9"/>
+                    </mask>
+                    <g mask="url(#mask0_vid)">
+                        <path d="M57.6163 77.9242L79.592 99.9L74 105.394L42.6061 74L74 42.6061L79.592 48.1L57.6163 70.0758H105.394V77.9242H57.6163Z" fill="#FCEE21"/>
+                    </g>
+                </g>
+                <defs>
+                    <clipPath id="clip0_vid">
+                        <rect width="148" height="148" fill="white"/>
+                    </clipPath>
+                </defs>
+            </svg>
+        </a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Columna de texto -->
+        <div class="text-column">
+            <h1 class="title">Video musical de Melisa Porrini</h1>
+            <p class="description">Esta cliente es una creadora de contenido<br>y pidio este dibujo animado de ella cantando<br>para su canal infantil de youtube.</p>
+        </div>
+
+        <!-- Columna de video -->
+        <div class="video-column">
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/eRxg5XoC8iM"
+                    title="Video musical de Melisa Porrini"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
