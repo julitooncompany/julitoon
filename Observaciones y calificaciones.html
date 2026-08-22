@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Observaciones y calificaciones - Juli Toon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== FONDO ========== */
+        .bg-image {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .bg-mobile  { display: block; }
+        .bg-tablet  { display: none;  }
+        .bg-desktop { display: none;  }
+
+        /* ========== CHECKBOX MENÚ ========== */
+        #menu-toggle { display: none; }
+
+        /* ========== NAV — fijo en la parte superior ========== */
+        .nav-menu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 128px;
+            z-index: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 25px 16px;
+        }
+
+        .boton-menu {
+            width: 76.2px;
+            height: 76.2px;
+            flex-shrink: 0;
+        }
+        .boton-menu label { display: block; width: 100%; height: 100%; cursor: pointer; }
+        .boton-menu svg   { width: 100%; height: 100%; }
+        .logo             { width: 102px; height: 96px; flex-shrink: 0; }
+        .logo svg         { width: 100%; height: 100%; }
+
+        /* ========== ÁREA CENTRAL — la sección azul se centra verticalmente ========== */
+        .main-area {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 128px;
+        }
+
+        /* ========== SECCIÓN AZUL ========== */
+        .seccion-form {
+            width: 100%;
+            background: #3fa9f5;
+            padding: 36px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ========== TARJETA BLANCA ========== */
+        .card {
+            background: white;
+            width: 100%;
+            border-radius: 20px;
+            padding: 36px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            align-items: center;
+        }
+
+        /* ========== TÍTULO ========== */
+        .titulo-bloque {
+            display: flex;
+            flex-direction: column;
+            gap: 21px;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            color: black;
+        }
+        .titulo-principal {
+            font-size: 24px;
+            font-weight: 900;
+            line-height: normal;
+        }
+        .subtitulo {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: normal;
+            max-width: 337px;
+        }
+
+        /* ========== ESTRELLAS ========== */
+        .fila-estrellas {
+            width: 100%;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 13px;
+            flex-wrap: wrap;
+        }
+        .estrella {
+            width: 46px;
+            height: 46px;
+            cursor: pointer;
+            flex-shrink: 0;
+            user-select: none;
+            display: inline-block;
+        }
+        .estrella svg { width: 100%; height: 100%; display: block; }
+        .estrella svg path {
+            fill: transparent;
+            stroke: #FCEE21;
+            stroke-width: 1.43636;
+            transition: fill 0.18s ease, stroke 0.18s ease;
+        }
+        .estrella.filled  svg path,
+        .estrella.hovered svg path { fill: #FCEE21; stroke: #FCEE21; }
+
+        @keyframes starPop {
+            0%   { transform: scale(1); }
+            35%  { transform: scale(1.38); }
+            65%  { transform: scale(0.88); }
+            82%  { transform: scale(1.12); }
+            100% { transform: scale(1); }
+        }
+        .estrella.pop { animation: starPop 0.32s cubic-bezier(.36,.07,.19,.97); }
+
+        /* ========== BOTÓN BORRAR ========== */
+        .btn-borrar {
+            background: #3fa9f5;
+            border: none;
+            border-radius: 60px;
+            padding: 6px 13px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: white;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            opacity: 0;
+            transform: translateX(22px) scale(0.78);
+            pointer-events: none;
+            transition: opacity 0.28s ease,
+                        transform 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .btn-borrar.visible {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            pointer-events: auto;
+        }
+        .btn-borrar:active { transform: scale(0.94); }
+
+        /* ========== TEXTAREA ========== */
+        .wrap-textarea {
+            width: 100%;
+            padding: 26px;
+            display: flex;
+            justify-content: center;
+        }
+        .campo {
+            width: 100%;
+            max-width: 291px;
+            height: 159px;
+            border: 10px solid #2E3192;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 20px;
+            font-weight: 900;
+            color: black;
+            resize: none;
+            outline: none;
+            background: white;
+        }
+        .campo::placeholder { color: black; font-weight: 900; }
+
+        /* ========== BOTÓN ENVIAR ========== */
+        .wrap-boton { padding: 9px 16px; }
+        .btn-enviar {
+            display: block;
+            background: #3fa9f5;
+            border: none;
+            border-radius: 20px;
+            padding: 20px;
+            font-family: 'Figtree', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.2s;
+        }
+        .btn-enviar:hover { opacity: 0.9; transform: scale(1.02); }
+
+        /* ========== FOOTER ========== */
+        .footer-wrap {
+            padding: 36px 16px;
+        }
+        .footer-inner {
+            background: #2E3192;
+            border-radius: 60px;
+            padding: 25px 16px;
+            text-align: center;
+        }
+        .footer-texto {
+            font-size: 32px;
+            font-weight: 900;
+            color: white;
+            white-space: nowrap;
+            line-height: normal;
+        }
+
+        /* ========== TABLET — 768px+ ========== */
+        @media screen and (min-width: 768px) {
+            .bg-mobile  { display: none;  }
+            .bg-tablet  { display: block; }
+            .bg-desktop { display: none;  }
+
+            .nav-menu      { padding: 25px 100px; }
+            .seccion-form  { padding: 36px 100px; }
+            .subtitulo     { max-width: 602px; }
+            .wrap-textarea { justify-content: stretch; }
+            .campo         { max-width: 100%; }
+            .footer-wrap   { padding: 36px 100px; }
+        }
+
+        /* ========== DESKTOP — 1024px+ ========== */
+        @media screen and (min-width: 1024px) {
+            .bg-mobile  { display: none;  }
+            .bg-tablet  { display: none;  }
+            .bg-desktop { display: block; }
+
+            .nav-menu      { padding: 25px 200px; }
+            .seccion-form  { padding: 36px 200px; }
+            .subtitulo     { max-width: 1008px; }
+            .wrap-textarea { justify-content: stretch; }
+            .campo         { max-width: 100%; }
+            .wrap-boton    { padding: 9px 98px; }
+            .footer-wrap   { padding: 36px 200px; }
+        }
+
+        /* ========== MENÚ HAMBURGUESA (CSS puro) ========== */
+        .menu-nav {
+            position: fixed;
+            inset: 0;
+            background: #fcee21;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateX(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform .4s cubic-bezier(.4,0,.2,1),
+                        opacity .35s ease,
+                        visibility 0s linear .4s;
+        }
+        #menu-toggle:checked ~ .menu-nav {
+            transform: translateX(0);
+            opacity: 1;
+            visibility: visible;
+            transition: transform .4s cubic-bezier(.4,0,.2,1),
+                        opacity .35s ease,
+                        visibility 0s linear 0s;
+        }
+        #menu-toggle:checked ~ .menu-nav .menu-item:nth-child(1) { animation: mIn .35s ease .15s both; }
+        #menu-toggle:checked ~ .menu-nav .menu-item:nth-child(2) { animation: mIn .35s ease .23s both; }
+        #menu-toggle:checked ~ .menu-nav .menu-item:nth-child(3) { animation: mIn .35s ease .31s both; }
+        @keyframes mIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+        .menu-frame {
+            display: flex;
+            flex-direction: column;
+            gap: 37px;
+            align-items: flex-start;
+            width: 439px;
+            max-width: 90%;
+        }
+        .menu-item {
+            display: inline-grid;
+            grid-template-columns: max-content;
+            grid-template-rows: max-content;
+            place-items: start;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+            transition: transform .2s ease;
+        }
+        .menu-item:hover { transform: translateX(10px); }
+        .menu-icon { grid-column:1; grid-row:1; width:107px; height:107px; }
+        .menu-text {
+            grid-column:1; grid-row:1;
+            font-family: 'Figtree', sans-serif;
+            font-weight: 900;
+            font-size: 71px;
+            color: #2e3192;
+            white-space: nowrap;
+            margin-left: 107px;
+            margin-top: 10px;
+            line-height: normal;
+        }
+        .btn-cerrar {
+            position: absolute;
+            top: 25px; right: 5.5%;
+            width: 89px; height: 89px;
+            background: none; border: none; padding: 0;
+            cursor: pointer;
+            transition: transform .2s ease;
+        }
+        .btn-cerrar:hover { transform: rotate(90deg); }
+        .btn-cerrar label { display:block; width:100%; height:100%; cursor:pointer; }
+
+        @media screen and (max-width: 767px) {
+            .menu-frame { gap:25.916px; width:330px; max-width:88%; }
+            .menu-icon  { width:79.476px; height:79.476px; }
+            .menu-text  { font-size:61.335px; margin-left:75.16px; margin-top:4.32px; }
+            .btn-cerrar { right:14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <input type="checkbox" id="menu-toggle">
+
+    <!-- Fondos responsive -->
+    <img class="bg-image bg-mobile"
+         src="Diseño de patrones celu_Mesa de trabajo 1.jpg" alt="">
+    <img class="bg-image bg-tablet"
+         src="Diseño de patrones tablet_Mesa de trabajo 1.jpg" alt="">
+    <img class="bg-image bg-desktop"
+         src="Diseño de patrones_Mesa de trabajo 1.jpg" alt="">
+
+    <!-- Nav -->
+    <header class="nav-menu">
+        <div class="boton-menu">
+            <label for="menu-toggle">
+                <svg viewBox="0 0 76.2002 76.2002" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M38.1001 76.2002C59.1422 76.2002 76.2002 59.1422 76.2002 38.1001C76.2002 17.058 59.1422 0 38.1001 0C17.058 0 0 17.058 0 38.1001C0 59.1422 17.058 76.2002 38.1001 76.2002Z" fill="#3FA9F5"/>
+                    <path d="M38.2394 65.6692C53.4014 65.6692 65.6925 53.3781 65.6925 38.2162C65.6925 23.0542 53.4014 10.7631 38.2394 10.7631C23.0775 10.7631 10.7864 23.0542 10.7864 38.2162C10.7864 53.3781 23.0775 65.6692 38.2394 65.6692Z" fill="#2E3192"/>
+                    <path d="M38.2394 32.1785C35.0355 32.1752 31.9638 30.901 29.6983 28.6355C27.4328 26.37 26.1586 23.2983 26.1553 20.0944H29.0116C29.0116 22.5408 29.9835 24.887 31.7133 26.6169C33.4432 28.3468 35.7894 29.3186 38.2358 29.3186C40.6823 29.3186 43.0285 28.3468 44.7584 26.6169C46.4882 24.887 47.4601 22.5408 47.4601 20.0944H50.3164C50.3131 23.2971 49.0399 26.3677 46.7759 28.633C44.512 30.8983 41.4421 32.1733 38.2394 32.1785Z" fill="#FCEE21"/>
+                    <path d="M38.2394 44.2591C35.0354 44.2553 31.9636 42.9807 29.6982 40.7149C27.4327 38.4491 26.1586 35.3772 26.1553 32.1732H29.0116C29.0116 34.6196 29.9835 36.9658 31.7133 38.6957C33.4432 40.4255 35.7894 41.3974 38.2358 41.3974C40.6823 41.3974 43.0285 40.4255 44.7584 38.6957C46.4882 36.9658 47.4601 34.6196 47.4601 32.1732H50.3164C50.3131 35.376 49.0399 38.4468 46.776 40.7124C44.5121 42.978 41.4422 44.2534 38.2394 44.2591Z" fill="#FCEE21"/>
+                    <path d="M38.2394 56.3379C35.0357 56.3341 31.9642 55.0597 29.6988 52.7943C27.4334 50.5289 26.1591 47.4575 26.1553 44.2537H29.0116C29.0116 46.7001 29.9835 49.0464 31.7133 50.7762C33.4432 52.5061 35.7894 53.4779 38.2358 53.4779C40.6823 53.4779 43.0285 52.5061 44.7584 50.7762C46.4882 49.0464 47.4601 46.7001 47.4601 44.2537H50.3164C50.3126 47.4562 49.0393 50.5266 46.7754 52.7918C44.5115 55.057 41.4419 56.3322 38.2394 56.3379Z" fill="#FCEE21"/>
+                </svg>
+            </label>
+        </div>
+        <div class="logo">
+            <svg viewBox="0 0 102 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clogo)">
+                    <path d="M32.946 0V17.1688C32.9578 18.2572 32.7361 19.3355 32.2956 20.3316C31.8628 21.295 31.2142 22.1469 30.3994 22.822C29.504 23.5571 28.4721 24.1097 27.3624 24.4483C26.0545 24.8504 24.6911 25.0454 23.3224 25.026C21.9587 25.0577 20.6044 24.7951 19.3523 24.2565C18.3008 23.7955 17.3563 23.1232 16.5781 22.2816C15.8993 21.5504 15.3526 20.7078 14.962 19.7912C14.6382 19.0506 14.4599 18.2551 14.4367 17.4478L20.1603 15.7045C20.4172 16.8467 20.8158 17.6976 21.3561 18.2571C21.6169 18.532 21.9332 18.7489 22.2841 18.8935C22.6351 19.0382 23.0127 19.1073 23.3924 19.0964C23.9497 19.1091 24.5007 18.9769 24.9909 18.7129C25.4613 18.4418 25.8355 18.0319 26.0616 17.5399C26.3395 16.9194 26.4721 16.2441 26.4494 15.565V0H32.946Z" fill="#2E3192"/>
+                    <path d="M57.5342 0V14.9997C57.5342 17.0518 57.1122 18.8175 56.2684 20.2968C55.4312 21.7732 54.1638 22.962 52.6336 23.7061C51.0525 24.4981 49.1497 24.8949 46.9249 24.8965C44.7485 24.8965 42.8757 24.4997 41.3063 23.7061C39.786 22.9607 38.5302 21.7713 37.7065 20.2968C36.8727 18.8175 36.4557 17.0518 36.4557 14.9997V0H42.9599V14.9997C42.9417 15.7308 43.1141 16.4541 43.4602 17.0991C43.7768 17.6717 44.2611 18.1347 44.8486 18.4265C45.5216 18.747 46.2617 18.9032 47.0075 18.8822C47.7595 18.9017 48.5058 18.7457 49.1863 18.4265C49.7777 18.1411 50.2629 17.6763 50.5722 17.0991C50.9051 16.4501 51.0685 15.7281 51.0475 14.9997V0H57.5342Z" fill="#2E3192"/>
+                    <path d="M78.0097 18.5311V24.4757H61.3966V0H67.8933V18.5311H78.0097Z" fill="#2E3192"/>
+                    <path d="M87.3181 0H80.819V24.4757H87.3181V0Z" fill="#2E3192"/>
+                    <path d="M20.373 33.4934V39.438H13.4511V57.9691H6.95443V39.438H0V33.4934H20.373Z" fill="#2E3192"/>
+                    <path d="M47.2726 45.7586C47.2731 48.1821 46.5517 50.5513 45.1996 52.5666C43.8475 54.5819 41.9254 56.1527 39.6765 57.0805C37.4276 58.0083 34.9528 58.2513 32.5652 57.7788C30.1775 57.3063 27.9842 56.1395 26.2627 54.426C24.5412 52.7125 23.3687 50.5293 22.8936 48.1524C22.4185 45.7756 22.6621 43.3118 23.5936 41.0728C24.5251 38.8337 26.1026 36.92 28.1267 35.5735C30.1507 34.227 32.5304 33.5084 34.9648 33.5084C36.581 33.508 38.1814 33.8246 39.6746 34.4401C41.1678 35.0556 42.5247 35.9579 43.6676 37.0955C44.8105 38.2331 45.7171 39.5836 46.3357 41.0701C46.9543 42.5565 47.2726 44.1497 47.2726 45.7586Z" fill="#2E3192"/>
+                    <path d="M62.9601 57.999C69.7562 57.999 75.2655 52.5143 75.2655 45.7487C75.2655 38.983 69.7562 33.4984 62.9601 33.4984C56.1641 33.4984 50.6548 38.983 50.6548 45.7487C50.6548 52.5143 56.1641 57.999 62.9601 57.999Z" fill="#2E3192"/>
+                    <path d="M102 33.4934V57.9691H95.5034L85.562 44.0178V57.9691H79.0654V33.4934H85.9122L95.5034 46.954V33.4934H102Z" fill="#2E3192"/>
+                    <path d="M51 96C45.1644 95.9908 39.5704 93.6789 35.444 89.5709C31.3175 85.4629 28.9952 79.894 28.986 74.0845H34.1893C34.1893 76.2822 34.6241 78.4584 35.4689 80.4889C36.3137 82.5193 37.552 84.3642 39.113 85.9182C40.6741 87.4723 42.5273 88.705 44.5668 89.5461C46.6064 90.3871 48.7924 90.82 51 90.82C53.2076 90.82 55.3936 90.3871 57.4332 89.5461C59.4727 88.705 61.326 87.4723 62.887 85.9182C64.448 84.3642 65.6863 82.5193 66.5311 80.4889C67.3759 78.4584 67.8107 76.2822 67.8107 74.0845H73.014C73.0054 79.8942 70.6833 85.4635 66.5568 89.5716C62.4302 93.6797 56.8358 95.9914 51 96Z" fill="#FCEE21"/>
+                </g>
+                <defs><clipPath id="clogo"><rect width="102" height="96" fill="white"/></clipPath></defs>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Sección principal centrada verticalmente -->
+    <div class="main-area">
+        <section class="seccion-form">
+            <article class="card">
+
+                <div class="titulo-bloque">
+                    <p class="titulo-principal">Observaciones y puntuacion del<br>servicio de Juli Toon</p>
+                    <p class="subtitulo">
+                        Si fuiste o sos cliente de Juli Toon<br>
+                        podes dar tu observacion y tu calificacion<br>
+                        de como fue tu experiencia con su servicio
+                    </p>
+                </div>
+
+                <div class="fila-estrellas" id="starsRow">
+                    <span class="estrella" data-v="1"><svg viewBox="0 0 43.714 41.5745" fill="none"><path d="M21.857 1.43636L26.9991 16.1455L27.1537 16.6036H27.6361H43.0783L30.7104 25.5273L30.3197 25.8109L30.4663 26.2727L35.6257 41.0273L23.2578 32.1036L22.857 31.8164L22.4562 32.1036L10.0884 41.0273L15.2477 26.2727L15.3943 25.8109L15.0036 25.5273L2.63574 16.6036H18.0779H18.5603L18.7149 16.1455L21.857 1.43636Z" stroke="#FCEE21" stroke-width="1.43636"/></svg></span>
+                    <span class="estrella" data-v="2"><svg viewBox="0 0 43.714 41.5745" fill="none"><path d="M21.857 1.43636L26.9991 16.1455L27.1537 16.6036H27.6361H43.0783L30.7104 25.5273L30.3197 25.8109L30.4663 26.2727L35.6257 41.0273L23.2578 32.1036L22.857 31.8164L22.4562 32.1036L10.0884 41.0273L15.2477 26.2727L15.3943 25.8109L15.0036 25.5273L2.63574 16.6036H18.0779H18.5603L18.7149 16.1455L21.857 1.43636Z" stroke="#FCEE21" stroke-width="1.43636"/></svg></span>
+                    <span class="estrella" data-v="3"><svg viewBox="0 0 43.714 41.5745" fill="none"><path d="M21.857 1.43636L26.9991 16.1455L27.1537 16.6036H27.6361H43.0783L30.7104 25.5273L30.3197 25.8109L30.4663 26.2727L35.6257 41.0273L23.2578 32.1036L22.857 31.8164L22.4562 32.1036L10.0884 41.0273L15.2477 26.2727L15.3943 25.8109L15.0036 25.5273L2.63574 16.6036H18.0779H18.5603L18.7149 16.1455L21.857 1.43636Z" stroke="#FCEE21" stroke-width="1.43636"/></svg></span>
+                    <span class="estrella" data-v="4"><svg viewBox="0 0 43.714 41.5745" fill="none"><path d="M21.857 1.43636L26.9991 16.1455L27.1537 16.6036H27.6361H43.0783L30.7104 25.5273L30.3197 25.8109L30.4663 26.2727L35.6257 41.0273L23.2578 32.1036L22.857 31.8164L22.4562 32.1036L10.0884 41.0273L15.2477 26.2727L15.3943 25.8109L15.0036 25.5273L2.63574 16.6036H18.0779H18.5603L18.7149 16.1455L21.857 1.43636Z" stroke="#FCEE21" stroke-width="1.43636"/></svg></span>
+                    <span class="estrella" data-v="5"><svg viewBox="0 0 43.714 41.5745" fill="none"><path d="M21.857 1.43636L26.9991 16.1455L27.1537 16.6036H27.6361H43.0783L30.7104 25.5273L30.3197 25.8109L30.4663 26.2727L35.6257 41.0273L23.2578 32.1036L22.857 31.8164L22.4562 32.1036L10.0884 41.0273L15.2477 26.2727L15.3943 25.8109L15.0036 25.5273L2.63574 16.6036H18.0779H18.5603L18.7149 16.1455L21.857 1.43636Z" stroke="#FCEE21" stroke-width="1.43636"/></svg></span>
+                    <button class="btn-borrar" id="btnBorrar" type="button">Borrar</button>
+                </div>
+
+                <div class="wrap-textarea">
+                    <textarea class="campo" id="campoObs" placeholder="Observación"></textarea>
+                </div>
+
+                <div class="wrap-boton">
+                    <form action="https://formsubmit.co/julianmignoni@gmail.com" method="POST" id="formObs">
+                        <input type="hidden" name="calificacion"   id="inputCalif" value="">
+                        <input type="hidden" name="observacion"    id="inputObs"   value="">
+                        <input type="hidden" name="_subject"       value="Nueva observacion - Juli Toon">
+                        <input type="hidden" name="_captcha"       value="false">
+                        <button type="submit" class="btn-enviar" onclick="prepEnvio()">Enviar</button>
+                    </form>
+                </div>
+
+            </article>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer-wrap">
+        <footer class="footer-inner">
+            <p class="footer-texto">&#169; Juli Toon 2025 </p>
+        </footer>
+    </div>
+
+    <!-- Menú lateral -->
+    <nav class="menu-nav">
+        <div class="menu-frame">
+            <a href="index.html" class="menu-item">
+                <div class="menu-icon"><svg fill="none" viewBox="0 0 107 107"><mask id="mi1" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="107" height="107" x="0" y="0"><rect fill="#D9D9D9" width="107" height="107"/></mask><g mask="url(#mi1)"><path d="M26.75 84.71H40.13V57.96H66.88V84.71H80.25V44.58L53.5 24.52L26.75 44.58V84.71ZM17.83 93.63V40.13L53.5 13.38L89.17 40.13V93.63H57.96V66.88H49.04V93.63H17.83Z" fill="#2E3192"/></g></svg></div>
+                <p class="menu-text">Inicio</p>
+            </a>
+            <a href="Trabajos.html" class="menu-item">
+                <div class="menu-icon"><svg fill="none" viewBox="0 0 107 107"><mask id="mi2" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="107" height="107" x="0" y="0"><rect fill="#D9D9D9" width="107" height="107"/></mask><g mask="url(#mi2)"><path d="M17.83 93.63C15.38 93.63 13.28 92.75 11.54 91.01C9.79 89.26 8.92 87.16 8.92 84.71V35.67C8.92 33.21 9.79 31.12 11.54 29.37C13.28 27.62 15.38 26.75 17.83 26.75H35.67V17.83C35.67 15.38 36.54 13.28 38.29 11.54C40.03 9.79 42.13 8.92 44.58 8.92H62.42C64.87 8.92 66.97 9.79 68.71 11.54C70.46 13.28 71.33 15.38 71.33 17.83V26.75H89.17C91.62 26.75 93.72 27.62 95.46 29.37C97.21 31.12 98.08 33.21 98.08 35.67V84.71C98.08 87.16 97.21 89.26 95.46 91.01C93.72 92.75 91.62 93.63 89.17 93.63H17.83ZM17.83 84.71H89.17V35.67H17.83V84.71ZM44.58 26.75H62.42V17.83H44.58V26.75Z" fill="#2E3192"/></g></svg></div>
+                <p class="menu-text">Trabajos</p>
+            </a>
+            <a href="Contacto.html" class="menu-item">
+                <div class="menu-icon"><svg fill="none" viewBox="0 0 107 107"><mask id="mi3" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="107" height="107" x="0" y="0"><rect fill="#D9D9D9" width="107" height="107"/></mask><g mask="url(#mi3)"><path d="M80.25 98.08H26.75C24.3 98.08 22.2 97.21 20.45 95.46C18.71 93.72 17.83 91.62 17.83 89.17V17.83C17.83 15.38 18.71 13.28 20.45 11.54C22.2 9.79 24.3 8.92 26.75 8.92H62.42L89.17 35.67V89.17C89.17 91.62 88.29 93.72 86.55 95.46C84.8 97.21 82.7 98.08 80.25 98.08ZM80.25 89.17V39.46L58.63 17.83H26.75V89.17H80.25Z" fill="#2E3192"/></g></svg></div>
+                <p class="menu-text">Contacto</p>
+            </a>
+        </div>
+        <div class="btn-cerrar">
+            <label for="menu-toggle"><svg fill="none" viewBox="0 0 89 89"><mask id="mc" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="89" height="89" x="0" y="0"><rect fill="#D9D9D9" width="89" height="89"/></mask><g mask="url(#mc)"><path d="M23.36 72.68L16.5 65.64L37.55 44.5L16.5 23.18L23.36 16.13L44.59 37.45L65.64 16.13L72.5 23.18L51.45 44.5L72.5 65.64L65.64 72.68L44.59 51.36L23.36 72.68Z" fill="#2E3192"/></g></svg></label>
+        </div>
+    </nav>
+
+    <script>
+        const stars     = document.querySelectorAll('.estrella');
+        const btnBorrar = document.getElementById('btnBorrar');
+        let rating = 0;
+
+        stars.forEach(function(s) {
+            s.addEventListener('click', function() {
+                rating = +s.dataset.v;
+                paint(rating);
+                btnBorrar.classList.toggle('visible', rating > 0);
+                // animación de rebote al seleccionar
+                s.classList.remove('pop');
+                void s.offsetWidth;
+                s.classList.add('pop');
+                s.addEventListener('animationend', function() {
+                    s.classList.remove('pop');
+                }, { once: true });
+            });
+            s.addEventListener('mouseenter', function() {
+                var v = +s.dataset.v;
+                stars.forEach(function(st) {
+                    var sv = +st.dataset.v;
+                    st.classList.toggle('filled',  sv <= rating);
+                    st.classList.toggle('hovered', sv > rating && sv <= v);
+                });
+            });
+            s.addEventListener('mouseleave', function() {
+                stars.forEach(function(st) { st.classList.remove('hovered'); });
+                paint(rating);
+            });
+        });
+
+        btnBorrar.addEventListener('click', function() {
+            rating = 0;
+            paint(0);
+            btnBorrar.classList.remove('visible');
+        });
+
+        function paint(val) {
+            stars.forEach(function(s) {
+                s.classList.toggle('filled', +s.dataset.v <= val);
+                s.classList.remove('hovered');
+            });
+        }
+
+        function prepEnvio() {
+            document.getElementById('inputCalif').value = rating ? rating + ' estrella' + (rating > 1 ? 's' : '') : 'Sin calificacion';
+            document.getElementById('inputObs').value   = document.getElementById('campoObs').value;
+        }
+    </script>
+
+</body>
+</html>
