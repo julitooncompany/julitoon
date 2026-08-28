@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observaciones y calificaciones - Juli Toon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -36,7 +36,7 @@
 
         /* ========== NAV — fijo en la parte superior ========== */
         .nav-menu {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -58,7 +58,7 @@
         .logo             { width: 102px; height: 96px; flex-shrink: 0; }
         .logo svg         { width: 100%; height: 100%; }
 
-        /* ========== ÁREA CENTRAL — la sección azul se centra verticalmente ========== */
+        /* ========== ÁREA CENTRAL ========== */
         .main-area {
             flex: 1;
             display: flex;
@@ -216,9 +216,7 @@
         .btn-enviar:hover { opacity: 0.9; transform: scale(1.02); }
 
         /* ========== FOOTER ========== */
-        .footer-wrap {
-            padding: 36px 16px;
-        }
+        .footer-wrap { padding: 36px 16px; }
         .footer-inner {
             background: #2E3192;
             border-radius: 60px;
@@ -341,6 +339,71 @@
             .menu-text  { font-size:61.335px; margin-left:75.16px; margin-top:4.32px; }
             .btn-cerrar { right:14px; }
         }
+
+        /* ========================================
+           OVERLAY — ACCESO SOLAMENTE PARA CLIENTES
+           ======================================== */
+        #acceso-overlay {
+            position: fixed;
+            inset: 0;
+            background: #2e3192;
+            z-index: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 36px 16px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        #acceso-overlay.oculto {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .acceso-contenido {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 33px;
+            width: 100%;
+            max-width: 343px;
+            text-align: center;
+        }
+
+        .acceso-icono {
+            width: 164px;
+            height: 164px;
+            flex-shrink: 0;
+        }
+        .acceso-icono svg { width: 100%; height: 100%; }
+
+        .acceso-titulo {
+            font-size: 28px;
+            font-weight: 900;
+            color: white;
+            line-height: normal;
+            width: 100%;
+        }
+
+        .acceso-desc {
+            font-size: 20px;
+            font-weight: 400;
+            color: white;
+            line-height: normal;
+            width: 100%;
+        }
+
+
+        @media screen and (min-width: 768px) {
+            .acceso-contenido { max-width: 634px; }
+            .acceso-titulo    { font-size: 32px; }
+            .acceso-desc      { font-size: 24px; }
+        }
+
+        @media screen and (min-width: 1024px) {
+            .acceso-contenido { max-width: 760px; }
+        }
     </style>
 </head>
 <body>
@@ -349,11 +412,40 @@
 
     <!-- Fondos responsive -->
     <img class="bg-image bg-mobile"
-         src="Diseño de patrones celu_Mesa de trabajo 1.jpg" alt="">
+         src="../src/imports/ObservacionesYCalificacionesCelu-1/47e5544ec29d94dfb8db234f816fd9e4daa53d88.png" alt="">
     <img class="bg-image bg-tablet"
-         src="Diseño de patrones tablet_Mesa de trabajo 1.jpg" alt="">
+         src="../src/imports/ObservacionesYCalificacionesTablet-1/06b06afeba6a8862cebc0c99c04121f2202df6a5.png" alt="">
     <img class="bg-image bg-desktop"
-         src="Diseño de patrones_Mesa de trabajo 1.jpg" alt="">
+         src="../src/imports/ObservacionesYCalificacionesCompu-1/c89bc7a8b3a9005e6edbc498ab9a9aa98b9c3e77.png" alt="">
+
+    <!-- ============================================================
+         OVERLAY — ACCESO SOLAMENTE PARA CLIENTES
+         (se oculta automáticamente si el cliente está verificado)
+         ============================================================ -->
+    <div id="acceso-overlay">
+        <div class="acceso-contenido">
+
+            <!-- Ícono de clientes (del diseño Figma) -->
+            <div class="acceso-icono">
+                <svg fill="none" viewBox="0 0 163.716 163.716" xmlns="http://www.w3.org/2000/svg">
+                    <mask id="amask" maskUnits="userSpaceOnUse" style="mask-type:alpha" width="164" height="164" x="0" y="0">
+                        <rect fill="#D9D9D9" width="163.716" height="163.716"/>
+                    </mask>
+                    <g mask="url(#amask)">
+                        <path fill="#3FA9F5" d="M-3.24023 146.831V122.445C-3.24023 117.783 -2.12094 113.585 0.117645 109.85C2.35623 106.115 5.32983 103.264 9.03844 101.298C16.5421 97.4325 24.2884 94.5334 32.2775 92.6006C40.2666 90.6679 48.3802 89.7015 56.6183 89.7015C64.8177 89.7015 72.8932 90.6679 80.8448 92.6006C88.7963 94.5334 96.5239 97.4325 104.028 101.298C107.737 103.264 110.711 106.115 112.948 109.85C115.187 113.585 116.306 117.783 116.306 122.445V146.831H-3.24023ZM130.802 146.831V120.398C130.802 115.623 129.494 110.393 126.88 104.709C124.265 99.0242 120.172 94.1923 114.601 90.2131C121.763 90.8953 128.5 92.1743 134.81 94.0502C141.119 95.9261 146.946 98.3421 152.29 101.298C157.046 104 160.68 107.006 163.19 110.316C165.701 113.627 166.956 116.987 166.956 120.398V146.831H130.802ZM33.7663 71.2835C27.5133 65.0305 24.3868 57.47 24.3868 48.6021C24.3868 39.7342 27.5133 32.1737 33.7663 25.9207C40.0193 19.6676 47.5798 16.5411 56.4477 16.5411C65.3157 16.5411 72.8761 19.6676 79.1292 25.9207C85.3822 32.1737 88.5087 39.7342 88.5087 48.6021C88.5087 57.47 85.3822 65.0305 79.1292 71.2835C72.8761 77.5365 65.3157 80.663 56.4477 80.663C47.5798 80.663 40.0193 77.5365 33.7663 71.2835ZM129.741 71.2835C123.462 77.5365 115.914 80.663 107.097 80.663C105.392 80.663 103.061 80.4641 100.105 80.0662C97.1492 79.6682 94.8186 79.1851 93.1132 78.6166C96.4102 74.2963 98.883 69.5867 100.532 64.4876C102.18 59.3886 103.004 54.0934 103.004 48.6021C103.004 43.1108 102.18 37.8156 100.532 32.7166C98.883 27.6175 96.4102 22.9078 93.1132 18.5876C95.387 17.7917 97.7177 17.2517 100.105 16.9675C102.493 16.6832 104.823 16.5411 107.097 16.5411C115.914 16.5411 123.462 19.6676 129.741 25.9207C136.019 32.1737 139.158 39.7342 139.158 48.6021C139.158 57.47 136.019 65.0305 129.741 71.2835ZM14.8367 128.754H98.2293V122.445C98.2293 121.194 98.0304 120.171 97.6324 119.375C97.2345 118.579 96.6945 118.011 96.0123 117.67C89.7593 114.6 83.2221 112.184 76.4006 110.422C69.5791 108.66 62.9566 107.778 56.533 107.778C50.1094 107.778 43.4869 108.66 36.6654 110.422C29.844 112.184 23.3067 114.6 17.0537 117.67C16.3715 118.011 15.8315 118.579 15.4336 119.375C15.0357 120.171 14.8367 121.194 14.8367 122.445V128.754ZM66.3389 58.4728C69.0675 55.7294 70.4318 52.4323 70.4318 48.5816C70.4318 44.7298 69.0607 41.4395 66.3184 38.7109C63.575 35.9823 60.278 34.618 56.4273 34.618C52.5754 34.618 49.2852 35.9892 46.5566 38.7314C43.828 41.4748 42.4637 44.7718 42.4637 48.6225C42.4637 52.4744 43.8348 55.7646 46.5771 58.4932C49.3204 61.2218 52.6175 62.5861 56.4682 62.5861C60.3201 62.5861 63.6103 61.215 66.3389 58.4728Z"/>
+                    </g>
+                </svg>
+            </div>
+
+            <p class="acceso-titulo">Acceso solamente para clientes</p>
+
+            <p class="acceso-desc">
+                Para tener acceso a esta página tenés que ser o
+                haber sido cliente de Juli Toon.
+            </p>
+
+        </div>
+    </div>
 
     <!-- Nav -->
     <header class="nav-menu">
@@ -386,7 +478,7 @@
         </div>
     </header>
 
-    <!-- Sección principal centrada verticalmente -->
+    <!-- Sección principal -->
     <div class="main-area">
         <section class="seccion-form">
             <article class="card">
@@ -410,7 +502,7 @@
                 </div>
 
                 <div class="wrap-textarea">
-                    <textarea class="campo" id="campoObs" placeholder="Observación"></textarea>
+                    <textarea class="campo" id="campoObs" placeholder="Observacion"></textarea>
                 </div>
 
                 <div class="wrap-boton">
@@ -456,16 +548,41 @@
     </nav>
 
     <script>
-        const stars     = document.querySelectorAll('.estrella');
-        const btnBorrar = document.getElementById('btnBorrar');
-        let rating = 0;
+
+        /* ================================================================
+           CLIENTES VERIFICADOS
+           ================================================================ */
+        var clientesVerificados = [
+            'veronicagutierrezgregoret@hotmail.com',
+            '+54 9 11 3013-9591',
+            '+54 9 341 681-8635',
+            '+54 9 341 507-2106',
+            '+54 9 341 683-8139',
+        ];
+
+        function normalizar(t) {
+            return t.trim().toLowerCase().replace(/[\s\-\(\)\.]/g, '');
+        }
+
+        function verificarCliente(contacto) {
+            var lista = clientesVerificados.map(normalizar);
+            if (lista.indexOf(normalizar(contacto)) !== -1) {
+                document.getElementById('acceso-overlay').classList.add('oculto');
+            }
+        }
+
+        /* ================================================================
+           ANIMACIÓN DE ESTRELLAS
+           ================================================================ */
+        var stars     = document.querySelectorAll('.estrella');
+        var btnBorrar = document.getElementById('btnBorrar');
+        var rating    = 0;
 
         stars.forEach(function(s) {
             s.addEventListener('click', function() {
                 rating = +s.dataset.v;
                 paint(rating);
                 btnBorrar.classList.toggle('visible', rating > 0);
-                // animación de rebote al seleccionar
                 s.classList.remove('pop');
                 void s.offsetWidth;
                 s.classList.add('pop');
