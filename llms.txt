@@ -1,0 +1,11 @@
+## Sobre mí
+Diseñador gráfico freelancer en Rosario especializado en la integración de diseño UI/UX (Figma) y código web estático para emprendedores y pymes.
+
+## Servicios principales
+- Diseño Gráfico e Identidad Visual
+- Edición de Video Publicitario
+- Maquetación Web (Figma a HTML/CSS en GitHub Pages)
+
+## Portafolio y Proyectos
+- Página principal: https://tu-usuario.github.io/
+- Sección Video: https://tu-usuario.github.io/video/
