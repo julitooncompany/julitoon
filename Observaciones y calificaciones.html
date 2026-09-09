@@ -558,6 +558,7 @@
             '+54 9 341 681-8635',
             '+54 9 341 507-2106',
             '+54 9 341 683-8139',
+            '+54 9 341 27-18844',
         ];
 
         function normalizar(t) {
@@ -621,7 +622,22 @@
             document.getElementById('inputCalif').value = rating ? rating + ' estrella' + (rating > 1 ? 's' : '') : 'Sin calificacion';
             document.getElementById('inputObs').value   = document.getElementById('campoObs').value;
         }
+
+        document.getElementById('formObs').addEventListener('submit', function(e) {
+            e.preventDefault();
+            prepEnvio();
+            var form = this;
+            var data = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).finally(function() {
+                window.location.href = 'enviado.html';
+            });
+        });
     </script>
 
 </body>
 </html>
+
