@@ -18,24 +18,19 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    min-height: 1723px;
+    min-height: 2573px;
 }
 
 /* Imagen de fondo */
 .background-img {
     position: absolute;
-    inset: 0;
-    width: 100%;
     height: 100%;
+    left: -21.48%;
     max-width: none;
-    object-fit: cover;
+    top: 0;
+    width: 142.95%;
     pointer-events: none;
 }
-
-/* Mostrar solo el fondo correspondiente al breakpoint */
-.bg-celu   { display: none; }
-.bg-tablet { display: none; }
-.bg-compu  { display: block; }
 
 /* SVG Full */
 .svg-full {
@@ -226,7 +221,7 @@ body {
     position: absolute;
     display: flex;
     flex-direction: column;
-    height: 648px;
+    height: 591px;
     align-items: center;
     left: 50%;
     transform: translateX(-50%);
@@ -334,33 +329,132 @@ body {
     margin-bottom: 0;
 }
 
-
 /* Botón de Educación */
-.btn-educacion {
-    display: flex;
+.boton-educacion {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #3fa9f5;
-    color: white;
+    background-color: #3fa9f5;
+    border-radius: 60px;
+    padding: 16px 36px;
     text-decoration: none;
+    color: white;
     font-family: 'Figtree', sans-serif;
     font-weight: 900;
     font-size: 32px;
-    line-height: normal;
-    padding: 16px 36px;
-    border-radius: 60px;
     white-space: nowrap;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-    align-self: center;
-}
-
-.btn-educacion:hover {
-    opacity: 0.9;
-    transform: scale(1.03);
-}
-
-.btn-educacion svg {
     flex-shrink: 0;
+    transition: opacity 0.2s ease;
+}
+
+.boton-educacion:hover {
+    opacity: 0.85;
+}
+
+/* Sección Clientes / Carrusel */
+.section-clientes {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1440px;
+    top: 1553px;
+    background-color: #3fa9f5;
+    padding: 36px 36px;
+    box-sizing: border-box;
+}
+
+.clientes-inner {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+}
+
+.clientes-inner::-webkit-scrollbar {
+    height: 6px;
+}
+
+.clientes-inner::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.3);
+    border-radius: 3px;
+}
+
+.clientes-inner::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 3px;
+}
+
+.card-cliente {
+    background: white;
+    border-radius: 50px;
+    padding: 24px 32px;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    min-height: 650px;
+    box-sizing: border-box;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.avatar-icon {
+    flex-shrink: 0;
+}
+
+.card-nombre {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #2e3192;
+    line-height: normal;
+}
+
+.card-estrellas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 16px 36px;
+    margin-top: 28px;
+    margin-bottom: 52px;
+}
+
+/* Melisa: estrellas más pequeñas, menos espacio arriba */
+.card-cliente:last-child .card-estrellas {
+    gap: 20px;
+    padding: 11px 26px;
+    margin-top: 0;
+    margin-bottom: 37px;
+}
+
+.estrella-icon {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+}
+
+/* Melisa: estrellas más pequeñas */
+.card-cliente:last-child .estrella-icon {
+    width: 62px;
+    height: 62px;
+}
+
+.card-texto {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
+    font-size: 32px;
+    color: #2e3192;
+    line-height: normal;
 }
 
 /* Footer */
@@ -372,7 +466,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     padding: 36px 200px;
-    top: 1563px;
+    top: 2413px;
     width: 100%;
     max-width: 1441px;
 }
@@ -571,10 +665,15 @@ body {
    TABLET - 768px a 1023px
    ============================================ */
 @media (max-width: 1023px) and (min-width: 768px) {
-    /* Fondo tablet */
-    .bg-celu   { display: none; }
-    .bg-tablet { display: block; }
-    .bg-compu  { display: none; }
+    /* Cambiar imagen de fondo para tablet */
+    .background-img {
+        content: url('Diseño de patrones tablet_Mesa de trabajo 1.jpg');
+        left: 0;
+        width: 100%;
+        height: 111.51%;
+        top: -0.02%;
+        object-fit: unset;
+    }
 
     /* Ajustar nav menu para tablet */
     .nav-menu {
@@ -627,11 +726,54 @@ body {
     .section-sobre-mi {
         max-width: 836px;
         padding: 36px 100px;
+        top: 891px;
+    }
+
+    .section-clientes {
+        max-width: 838px;
+        padding: 36px 36px;
+        top: 1464px;
+    }
+
+    .section-clientes .card-estrellas {
+        gap: 20px;
+        padding: 11px 26px;
+        margin-top: 20px;
+        margin-bottom: 36px;
+    }
+
+    .section-clientes .card-cliente:last-child .card-estrellas {
+        margin-top: 0;
+        margin-bottom: 26px;
+    }
+
+    .section-clientes .estrella-icon {
+        width: 62px;
+        height: 62px;
+    }
+
+    .section-clientes .card-cliente:last-child .estrella-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .section-clientes .card-texto {
+        font-size: 22px;
     }
 
     .footer-wrapper {
         max-width: 838px;
         padding: 36px 100px;
+        top: 2364px;
+    }
+
+    .inicio {
+        min-height: 2480px;
+    }
+
+    .boton-educacion {
+        font-size: 24px;
+        padding: 12px 24px;
     }
 
     /* Ajustar texto de bienvenido para tablet */
@@ -644,80 +786,68 @@ body {
    MÓVIL - Hasta 767px
    ============================================ */
 @media (max-width: 767px) {
-    /* Fondo móvil */
-    .bg-celu   { display: block; }
-    .bg-tablet { display: none; }
-    .bg-compu  { display: none; }
-
-    /* Imagen de fondo fija para que cubra aunque el contenido crezca */
+    /* Cambiar imagen de fondo para móvil */
     .background-img {
-        position: fixed;
-        height: 100vh;
-    }
-
-    /* Contenedor principal: flujo vertical */
-    .inicio {
-        height: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding-bottom: 24px;
-    }
-
-    /* Nav menu sigue absoluto para flotar sobre el contenido */
-    .nav-menu {
+        content: url('Diseño de patrones celu_Mesa de trabajo 1.jpg');
         position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        max-width: none;
+    }
+
+    /* Ajustar contenedor principal */
+    .inicio {
+        min-height: 2700px;
+        height: auto;
+    }
+
+    /* Ajustar nav menu para móvil */
+    .nav-menu {
         max-width: 375px;
         padding: 25px 16px;
     }
 
-    /* Wrappers pasan a flujo normal (sin position absolute ni top fijo) */
+    /* Ajustar wrappers para móvil */
     .bienvenido-wrapper {
-        position: static;
-        transform: none;
-        left: auto;
-        width: 100%;
         max-width: 375px;
-        padding: 16px 16px 0;
-        margin-top: 128px;
+        padding: 0;
+        top: 188px;
     }
 
     .bienvenido {
-        width: 100%;
+        max-width: 375px;
     }
 
     .bienvenido-text {
-        width: 100%;
+        width: 343px;
     }
 
     .servicios-wrapper {
-        position: static;
-        transform: none;
-        left: auto;
-        width: 100%;
         max-width: 375px;
-        padding: 16px 16px 0;
+        padding: 0;
+        top: 484px;
     }
 
     .servicio-diseno {
-        width: 100%;
+        max-width: 375px;
     }
 
-    /* Sobre Juli Toon: flujo normal, layout vertical */
+    /* Cambiar layout de "Sobre Juli Toon" a vertical */
     .section-sobre-mi {
-        position: static;
-        transform: none;
-        left: auto;
-        width: 100%;
         max-width: 375px;
+        padding: 0;
+        top: 780px;
         height: auto;
-        padding: 16px 16px 0;
     }
 
     .sobre-juli-toon {
-        width: 100%;
         height: auto;
+        max-width: 375px;
+        padding: 24px 16px;
     }
 
     .sobre-juli-inner {
@@ -726,7 +856,7 @@ body {
 
     .sobre-juli-content {
         flex-direction: column;
-        gap: 24px;
+        gap: 44px;
         height: auto;
     }
 
@@ -742,7 +872,7 @@ body {
     }
 
     .frame-content {
-        gap: 24px;
+        gap: 44px;
     }
 
     .sobre-text {
@@ -750,15 +880,65 @@ body {
         text-align: center;
     }
 
-    /* Footer: flujo normal, siempre al final */
-    .footer-wrapper {
-        position: static;
-        transform: none;
-        left: auto;
-        width: 100%;
+    /* Sección clientes para móvil */
+    .section-clientes {
         max-width: 375px;
-        padding: 16px 16px 0;
+        padding: 36px 16px;
+        top: 1730px;
+    }
+
+    .card-cliente {
+        flex: 0 0 calc(100vw - 64px);
+        padding: 24px 16px;
+        min-height: 0;
+    }
+
+    .card-nombre {
+        font-size: 22px;
+    }
+
+    .card-estrellas {
+        gap: 12px;
+        padding: 8px 16px;
         margin-top: 16px;
+        margin-bottom: 24px;
+    }
+
+    .card-cliente:last-child .card-estrellas {
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
+    .estrella-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-cliente:last-child .estrella-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .card-texto {
+        font-size: 16px;
+    }
+
+    .boton-educacion {
+        font-size: 22px;
+        padding: 12px 20px;
+    }
+
+    .boton-educacion svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    /* Ajustar footer para móvil */
+    .footer-wrapper {
+        max-width: 375px;
+        padding: 25px 16px;
+        top: 2552px;
+        bottom: auto;
     }
 
     .footer {
