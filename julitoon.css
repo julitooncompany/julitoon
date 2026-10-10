@@ -374,19 +374,7 @@ body {
     padding-bottom: 4px;
 }
 
-.clientes-inner::-webkit-scrollbar {
-    height: 6px;
-}
-
-.clientes-inner::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.3);
-    border-radius: 3px;
-}
-
-.clientes-inner::-webkit-scrollbar-thumb {
-    background: white;
-    border-radius: 3px;
-}
+/* scrollbar predeterminado del navegador */
 
 .card-cliente {
     background: white;
@@ -724,15 +712,30 @@ body {
     }
 
     .section-sobre-mi {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 891px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 836px;
+        width: 100%;
         padding: 36px 100px;
-        top: 891px;
+        height: auto;
     }
 
     .section-clientes {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 838px;
+        width: 100%;
         padding: 36px 36px;
-        top: 1464px;
     }
 
     .section-clientes .card-estrellas {
@@ -762,13 +765,20 @@ body {
     }
 
     .footer-wrapper {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 838px;
+        width: 100%;
         padding: 36px 100px;
-        top: 2364px;
     }
 
     .inicio {
-        min-height: 2480px;
+        min-height: auto;
+        height: auto;
     }
 
     .boton-educacion {
@@ -799,9 +809,9 @@ body {
         max-width: none;
     }
 
-    /* Ajustar contenedor principal */
+    /* Ajustar contenedor principal — la altura la define el flujo de secciones */
     .inicio {
-        min-height: 2700px;
+        min-height: auto;
         height: auto;
     }
 
@@ -836,11 +846,18 @@ body {
         max-width: 375px;
     }
 
-    /* Cambiar layout de "Sobre Juli Toon" a vertical */
+    /* Cambiar layout de "Sobre Juli Toon" a vertical — flujo normal */
     .section-sobre-mi {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 780px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 375px;
+        width: 100%;
         padding: 0;
-        top: 780px;
         height: auto;
     }
 
@@ -880,11 +897,18 @@ body {
         text-align: center;
     }
 
-    /* Sección clientes para móvil */
+    /* Sección clientes para móvil — flujo normal, apilado bajo Sobre Mi */
     .section-clientes {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
         max-width: 375px;
+        width: 100%;
         padding: 36px 16px;
-        top: 1730px;
     }
 
     .card-cliente {
@@ -933,12 +957,17 @@ body {
         height: 36px;
     }
 
-    /* Ajustar footer para móvil */
+    /* Ajustar footer para móvil — flujo normal */
     .footer-wrapper {
-        max-width: 375px;
-        padding: 25px 16px;
-        top: 2552px;
+        position: relative;
+        top: auto;
         bottom: auto;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 375px;
+        width: 100%;
+        padding: 25px 16px;
     }
 
     .footer {
