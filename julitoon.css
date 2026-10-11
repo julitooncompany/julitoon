@@ -704,11 +704,25 @@ body {
         height: 89px;
     }
 
-    /* Ajustar wrappers para tablet */
+    /* Ajustar wrappers para tablet — flujo relativo */
     .bienvenido-wrapper,
     .servicios-wrapper {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
         max-width: 836px;
         padding: 16px 100px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .bienvenido-wrapper {
+        margin-top: 0;
+    }
+
+    .servicios-wrapper {
+        margin-top: 72px;
     }
 
     .section-sobre-mi {
@@ -716,7 +730,7 @@ body {
         top: auto;
         left: auto;
         transform: none;
-        margin-top: 891px;
+        margin-top: 60px;
         margin-left: auto;
         margin-right: auto;
         max-width: 836px;
@@ -733,7 +747,7 @@ body {
         margin-top: 24px;
         margin-left: auto;
         margin-right: auto;
-        max-width: 838px;
+        max-width: 1023px;
         width: 100%;
         padding: 36px 36px;
     }
@@ -779,6 +793,7 @@ body {
     .inicio {
         min-height: auto;
         height: auto;
+        padding-top: 209px;
     }
 
     .boton-educacion {
@@ -813,6 +828,7 @@ body {
     .inicio {
         min-height: auto;
         height: auto;
+        padding-top: 188px;
     }
 
     /* Ajustar nav menu para móvil */
@@ -821,11 +837,17 @@ body {
         padding: 25px 16px;
     }
 
-    /* Ajustar wrappers para móvil */
+    /* Ajustar wrappers para móvil — flujo relativo */
     .bienvenido-wrapper {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
         max-width: 375px;
         padding: 0;
-        top: 188px;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .bienvenido {
@@ -837,9 +859,15 @@ body {
     }
 
     .servicios-wrapper {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
         max-width: 375px;
         padding: 0;
-        top: 484px;
+        margin-top: 43px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .servicio-diseno {
@@ -852,7 +880,7 @@ body {
         top: auto;
         left: auto;
         transform: none;
-        margin-top: 780px;
+        margin-top: 43px;
         margin-left: auto;
         margin-right: auto;
         max-width: 375px;
@@ -906,7 +934,7 @@ body {
         margin-top: 24px;
         margin-left: auto;
         margin-right: auto;
-        max-width: 375px;
+        max-width: 767px;
         width: 100%;
         padding: 36px 16px;
     }
